@@ -1,7 +1,7 @@
-<?php
-  include 'connection.php';
-  session_start();
-?>
+<!--  <?php
+  // include 'connection.php';
+  // session_start();
+?> -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -25,7 +25,7 @@
       </div>
       <div class="login-box-body">
         <p class="login-box-msg">Sistem Informasi Kependudukan Dolly</p>
-        <form action="cek_login.php" method="post">
+        <form action="lurah_panel.php" method="post">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Username" name="username"/>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>

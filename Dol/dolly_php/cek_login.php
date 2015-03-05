@@ -14,9 +14,9 @@ while ($row = mysql_fetch_array($result)) {
 	if ($row['USERNAME'] == $user AND $row['PASSWORD'] == $pass) {
 		$ada = true;
 		if ($row['JABATAN'] == "lurah") {
-			echo "anda Lurah";
+			header('lurah_panel.php');
 		} else if ($row['JABATAN'] == "rt") {
-			echo "anda RT";
+			header('rt_panel.php');
 		} else {
 			echo "anda RW";
 		}
