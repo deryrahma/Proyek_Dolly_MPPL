@@ -139,9 +139,22 @@
 
           </div><!-- /.row -->
 
+          <?php
+            $ID_ANAK = $_GET['id_anak'];
+            include "connection.php";
+            $query = "SELECT * FROM kakak_asuh WHERE ID_ANAK = " , $ID_ANAK;
+            $result = mysql_query($query);
+            if($result)
+            {
+                $row = mysql_fetch_array($result);
+            } else {
+                echo 'Invalid query: ' . mysql_error() . "\n";
+                echo 'Whole query: ' . $query; 
+            }
+          ?>
+
           <!-- Main row -->
           <div class="row">
-          
             <form class="form-horizontal">
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Nama Lengkap</label>
