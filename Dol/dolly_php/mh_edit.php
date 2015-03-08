@@ -139,130 +139,192 @@
 
           </div><!-- /.row -->
 
+          <?php
+            $ID_ANAK = $_GET['id_anak'];
+            include "connection.php";
+            $query = "SELECT * FROM anak_binaan WHERE ID_ANAK = " . $ID_ANAK;
+            $result = mysql_query($query);
+            if($result)
+            {
+                while($row = mysql_fetch_array($result))
+                {
+                  $nama_anak = $row['NAMA_ANAK'];
+                  $jk_anak = $row['JK_ANAK'];
+                  $tempat_lahir = $row['TEMPAT_LAHIR'];
+                  $tanggal_lahir = $row['TANGGAL_LAHIR'];
+                  $agama = $row['AGAMA'];
+                  $anak_ke = $row['ANAK_KE'];
+                  $alamat_siswa = $row['ALAMAT_SISWA'];
+                  $tanggal_masuk = $row['TANGGAL_MASUK'];
+                  $kelas = $row['KELAS'];
+                  $nama_sekolah = $row['NAMA_SEKOLAH'];
+                  $sekolah_asal = $row['SEKOLAH_ASAL'];
+                  $alamat_sekolah = $row['ALAMAT_SEKOLAH'];
+                  $nama_ayah = $row['NAMA_AYAH'];
+                  $nama_ibu = $row['NAMA_IBU'];
+                  $alamat_ortu = $row['ALAMAT_ORTU'];
+                  $pekerjaan_ayah = $row['PEKERJAAN_AYAH'];
+                  $pekerjaan_ibu = $row['PEKERJAAN_IBU'];
+                  $id_kakak = $row['ID_KAKAK'];
+                }
+            } else {
+                echo 'Invalid query: ' . mysql_error() . "\n";
+                echo 'Whole query: ' . $query; 
+            }
+          ?>
+
+          <!-- Main row -->
           <!-- Main row -->
           <div class="row">
           
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="cek_edit.php" method="post">
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Nama Lengkap</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control" name="nama_anak" placeholder="Nama lengkap siswa">
+                  <input type="hidden" name="id_anak" value=<?php echo $ID_ANAK; ?>>
+                  <input type="text" class="form-control" name="nama_anak" placeholder="Nama lengkap siswa" value=<?php echo "\"" . $nama_anak . "\""; ?>>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Jenis Kelamin</label>
                 <div class="col-sm-6">
                   <div class="radio">
-                    <label><input type="radio" name="jk_anak">Laki-laki</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="radio" name="jk_anak">Perempuan</label> 
+                    <label><input type="radio" name="jk_anak" value="L" <?php if ($jk_anak == 'L'){
+                      echo " checked";
+                    } {
+                      # code...
+                    } ?>>Laki-laki</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="radio" name="jk_anak" value="P" <?php if ($jk_anak == 'P'){
+                      echo " checked";
+                    } {
+                      # code...
+                    } ?>>Perempuan</label> 
                   </div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Tempat Lahir</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat lahir siswa">
+                  <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat lahir siswa" value=<?php echo "\"" . $tempat_lahir . "\""; ?>>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Tanggal Lahir</label>
                 <div class="col-sm-3">
-                  <input type="date" class="form-control" name="tanggal_lahir">
+                  <input type="date" class="form-control" name="tanggal_lahir" value=<?php echo "\"" . date("Y-m-d", strtotime($tanggal_lahir)) . "\""; ?>>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Agama</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control" name="agama" placeholder="Agama siswa">
+                  <input type="text" class="form-control" name="agama" placeholder="Agama siswa" value=<?php echo "\"" . $agama . "\""; ?>>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Anak ke -</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control" name="anak_ke">
+                  <input type="text" class="form-control" name="anak_ke" value=<?php echo "\"" . $anak_ke . "\""; ?>>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Alamat</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control" name="alamat_siswa" placeholder="Alamat rumah siswa">
+                  <input type="text" class="form-control" name="alamat_siswa" placeholder="Alamat rumah siswa" value=<?php echo "\"" . $alamat_siswa . "\""; ?>>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Tanggal Masuk Sekolah</label>
                 <div class="col-sm-3">
-                  <input type="date" class="form-control" name="tanggal_masuk" placeholder="Email">
+                  <input type="date" class="form-control" name="tanggal_masuk" placeholder="Email" value=<?php echo "\"" . date("Y-m-d", strtotime($tanggal_masuk)) . "\""; ?>>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Kelas</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control" name="kelas" placeholder="Diterima di kelas">
+                  <input type="text" class="form-control" name="kelas" placeholder="Diterima di kelas"  value=<?php echo "\"" . $kelas . "\""; ?>>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Nama Sekolah</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" name="nama_sekolah" placeholder="Nama sekolah" value=<?php echo "\"" . $nama_sekolah . "\""; ?>>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Sekolah Asal</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control" name="sekolah_asal" placeholder="Sekolah asal">
+                  <input type="text" class="form-control" name="sekolah_asal" placeholder="Sekolah asal" value=<?php echo "\"" . $sekolah_asal . "\""; ?>>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Alamat Sekolah</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control" name="alamat_sekolah" placeholder="Alamat sekolah asal">
+                  <input type="text" class="form-control" name="alamat_sekolah" placeholder="Alamat sekolah asal" value=<?php echo "\"" . $alamat_sekolah . "\""; ?>>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Nama Ayah</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control" name="nama_ayah" placeholder="Nama ayah siswa">
+                  <input type="text" class="form-control" name="nama_ayah" placeholder="Nama ayah siswa" value=<?php echo "\"" . $nama_ayah . "\""; ?>>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Nama Ibu</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control" name="nama_ibu" placeholder="Nama ibu siswa">
+                  <input type="text" class="form-control" name="nama_ibu" placeholder="Nama ibu siswa" value=<?php echo "\"" . $nama_ibu . "\""; ?>>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Alamat Orang Tua</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control" name="alamat_ortu" placeholder="Alamat orang tua siswa">
+                  <input type="text" class="form-control" name="alamat_ortu" placeholder="Alamat orang tua siswa" value=<?php echo "\"" . $alamat_ortu . "\""; ?>>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Pekerjaan Ayah</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control" name="pekerjaan_ayah" placeholder="Pekerjaan ayah">
+                  <input type="text" class="form-control" name="pekerjaan_ayah" placeholder="Pekerjaan ayah" value=<?php echo "\"" . $pekerjaan_ayah . "\""; ?>>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Pekerjaan Ibu</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control" name="pekerjaan_ibu" placeholder="Pekerjaan ibu">
+                  <input type="text" class="form-control" name="pekerjaan_ibu" placeholder="Pekerjaan ibu" value=<?php echo "\"" . $pekerjaan_ibu . "\""; ?>>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Nama Kakak Asuh</label>
                 <div class="col-sm-6">
+                  <!--
                   <input type="text" class="form-control" name="nama_kakak" placeholder="Nama kakak asuh">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">Alamat Kakak Asuh</label>
-                <div class="col-sm-6">
-                  <input type="text" class="form-control" name="alamat_kakak" placeholder="Alamat kakak asuh">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">No. Telp Kakak Asuh</label>
-                <div class="col-sm-6">
-                  <input type="text" class="form-control" name="no_telp_kakak" placeholder="Nomor telpon kakak asuh">
+                  -->
+                  <select name="id_kakak" class="form-control" title="Nama kakak asuh">
+                    <?php
+                      //include "connection.php";
+                      $query = "SELECT * FROM kakak_asuh";
+                      $result = mysql_query($query);
+                      if($result)
+                      {
+                          while($row = mysql_fetch_array($result))
+                          {
+                            //echo $row['ID_KAKAK'] . "<br>";
+                            echo "<option value=" . $row['ID_KAKAK'];
+                            if ($row['ID_KAKAK'] == $id_kakak) {
+                              echo " selected";
+                            }
+                            echo ">" . $row['NAMA_KAKAK'] . "</option>";
+                          }
+                      } else {
+                          echo 'Invalid query: ' . mysql_error() . "\n";
+                          echo 'Whole query: ' . $query; 
+                      }
+                    ?>
+                  </select>
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-10">
-                  <button type="submit" class="btn btn-success">Ubah</button>
+                  <button type="submit" class="btn btn-success">UPDATE</button>
                   <button type="reset" class="btn btn-danger">Batal</button>
                 </div>
               </div>

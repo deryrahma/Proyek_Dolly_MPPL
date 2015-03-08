@@ -1,3 +1,6 @@
+<?php
+  include "connection.php";
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -143,7 +146,7 @@
           <!-- Main row -->
           <div class="row">
           
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="cek_tambah.php" method="post">
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Nama Lengkap</label>
                 <div class="col-sm-6">
@@ -154,8 +157,8 @@
                 <label for="inputEmail3" class="col-sm-3 control-label">Jenis Kelamin</label>
                 <div class="col-sm-6">
                   <div class="radio">
-                    <label><input type="radio" name="jk_anak">Laki-laki</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="radio" name="jk_anak">Perempuan</label> 
+                    <label><input type="radio" name="jk_anak" value="L">Laki-laki</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="radio" name="jk_anak" value="P">Perempuan</label> 
                   </div>
                 </div>
               </div>
@@ -199,6 +202,12 @@
                 <label for="inputEmail3" class="col-sm-3 control-label">Kelas</label>
                 <div class="col-sm-6">
                   <input type="text" class="form-control" name="kelas" placeholder="Diterima di kelas">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Nama Sekolah</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" name="nama_sekolah" placeholder="Nama sekolah">
                 </div>
               </div>
               <div class="form-group">
@@ -246,19 +255,27 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Nama Kakak Asuh</label>
                 <div class="col-sm-6">
+                  <!--
                   <input type="text" class="form-control" name="nama_kakak" placeholder="Nama kakak asuh">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">Alamat Kakak Asuh</label>
-                <div class="col-sm-6">
-                  <input type="text" class="form-control" name="alamat_kakak" placeholder="Alamat kakak asuh">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">No. Telp Kakak Asuh</label>
-                <div class="col-sm-6">
-                  <input type="text" class="form-control" name="no_telp_kakak" placeholder="Nomor telpon kakak asuh">
+                  -->
+                  <select name="id_kakak" class="form-control" title="Nama kakak asuh">
+                    <?php
+                      include "connection.php";
+                      $query = "SELECT * FROM kakak_asuh";
+                      $result = mysql_query($query);
+                      if($result)
+                      {
+                          while($row = mysql_fetch_array($result))
+                          {
+                            //echo $row['ID_KAKAK'] . "<br>";
+                            echo "<option value=" . $row['ID_KAKAK'] . ">" . $row['NAMA_KAKAK'] . "</option>";
+                          }
+                      } else {
+                          echo 'Invalid query: ' . mysql_error() . "\n";
+                          echo 'Whole query: ' . $query; 
+                      }
+                    ?>
+                  </select>
                 </div>
               </div>
               <div class="form-group">

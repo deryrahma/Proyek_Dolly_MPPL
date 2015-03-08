@@ -1,17 +1,15 @@
 <?php
-	$username = "root";
+	$username = "mpplbaru";
 	$password = "";
-	$hostname = "localhost"; 
+	$hostname = "10.151.31.107"; 
 
 	//connection to the database
 	$conn = mysql_connect($hostname, $username, $password) 
 	 or die("Unable to connect to MySQL");
 	//echo "Connected to MySQL<br>";
 
-	//select a database to work with
-	$selected = mysql_select_db("mppl",$conn) 
-	  or die("Could not select discovery");
-	
+	mysql_select_db("mppl_baru") or die("could not select database");
+	//echo "fine";
 	//close the connection
 	//mysql_close($conn);
 ?>

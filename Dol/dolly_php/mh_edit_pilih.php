@@ -164,30 +164,32 @@
               </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                    <th>Agama</th>
-                    <th><a href="mh_edit.php"><i class="glyphicon glyphicon-pencil"></i></a></th>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Peter</td>
-                    <td>Parker</td>
-                    <td>peterparker@mail.com</td>
-                    <th>Agama</th>
-                    <th><a href="mh_edit.php"><i class="glyphicon glyphicon-pencil"></i></a></th>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>John</td>
-                    <td>Rambo</td>
-                    <td>johnrambo@mail.com</td>
-                    <th>Agama</th>
-                    <th><a href="mh_edit.php"><i class="glyphicon glyphicon-pencil"></i></a></th>
-                </tr>
+              <?php
+                include "connection.php";
+                $query = "SELECT * FROM anak_binaan";
+                $result = mysql_query($query);
+                if($result)
+                {
+                    while($row = mysql_fetch_array($result))
+                    {
+                      //echo $row['ID_KAKAK'] . "<br>";
+                      echo "<tr>\n\t";
+                      echo "<td>" . $row['NAMA_ANAK'] . "</td>\n\t";
+                      if($row['JK_ANAK'] == 'L'){
+                        echo "<td>Laki-laki</td>\n\t";
+                      } else {
+                        echo "<td>Perempuan</td>\n\t";
+                      }
+                      echo "<td>" . $row['TEMPAT_LAHIR'] . "</td>\n\t";
+                      echo "<td>" . $row['TANGGAL_LAHIR'] . "</td>\n\t";
+                      echo "<td>" . $row['AGAMA'] . "</td>\n\t";
+                      echo "<td><a href=\"mh_edit.php?id_anak=" . $row['ID_ANAK'] . "\"><i class=\"glyphicon glyphicon-pencil\"></i></a></td>\n\t";
+                    }
+                } else {
+                    echo 'Invalid query: ' . mysql_error() . "\n";
+                    echo 'Whole query: ' . $query; 
+                }
+              ?>
             </tbody>
             </table>
           </div>
