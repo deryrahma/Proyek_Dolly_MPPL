@@ -23,19 +23,6 @@
     <link href="../dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
     <link href="../dist/css/dataTables.fixedColumns.css" rel="stylesheet" type="text/css" />
     <link href="../dist/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
-    <style>
-      .skrol {
-        overflow: scroll;
-      }
-
-        /* Ensure that the demo table scrolls */
-      th, td { white-space: nowrap; }
-      div.dataTables_wrapper {
-          width: 800px;
-          margin: 0 auto;
-              
-      }
-    </style>
   </head>
 
   <body class="skin-blue">
@@ -43,7 +30,7 @@
       
       <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo"><b>Dolly</b>Care</a>
+        <a href="mh_panel.php" class="logo"><b>Dolly</b>Care</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
 
@@ -82,35 +69,69 @@
               <a href="mh_edit_pilih.php"><i class="glyphicon glyphicon-pencil">&nbsp;&nbsp;&nbsp;</i></a>
               <a href="mh_hapus_pilih.php"><i class="glyphicon glyphicon-trash"></i></a></span></center>
               <br/>
-            <li class="header">MENU UTAMA</li>
-            <li class="active treeview">
-              <a href="mh_panel.php">
-                <img src="../dist/img/population.png"/ width="10%" height="10%">
-                <span>Data Siswa</span>
-              </a>
-            </li>
+            <li class="header">MENU UTAMA</li>    
+
+            <!-- Data Elemen -->
             <li class="treeview">
-              <a href="mh_harian.php">
-                 <img src="../dist/img/red.png"/ width="10%" height="10%">
-                <span>Report Harian</span>
-                
+              <a href="#">
+                <img src="../dist/img/population.png"/ width="10%" height="10%">
+                <span>Data Elemen</span>
+                <i class="glyphicon glyphicon-chevron-down pull-right"></i>
               </a>
-             
+              <ul class="treeview-menu">
+                <li class="treeview">
+                  <a href="mh_elemen_kakak.php">
+                     <img src="../dist/img/kakak-icon.png"/ width="10%" height="10%">
+                    <span>Kakak Asuh</span>    
+                  </a>
+                </li>
+                <li class="treeview">
+                  <a href="mh_elemen_siswa.php">
+                     <img src="../dist/img/siswa-icon.ico"/ width="10%" height="10%">
+                     <span>Siswa Binaan</span>
+                  </a>
+                </li>
+              </ul>
             </li>
-            <li>
-              <a href="mh_mingguan.php">
-                 <img src="../dist/img/yellow.png"/ width="10%" height="10%">
-                 <span>Report Mingguan</span>
+
+            <!-- Pelatihan -->
+            <li class="treeview">
+              <a href="mh_pelatihan.php">
+                <img src="../dist/img/training-icon.png"/ width="10%" height="10%">
+                <span>Pelatihan</span>
               </a>
             </li>
-            <li>
-              <a href="mh_bulanan.php">
-                 <img src="../dist/img/green.png"/ width="10%" height="10%">
-                 <span>Report Bulanan</span>
+
+            <!-- Report -->
+            <li class="treeview">
+              <a href="#">
+                <img src="../dist/img/doc-icon.png"/ width="10%" height="10%">
+                <span>Report</span>
+                <i class="glyphicon glyphicon-chevron-down pull-right"></i>
               </a>
+              <ul class="treeview-menu">
+                <li class="treeview">
+                  <a href="mh_harian.php">
+                     <img src="../dist/img/red.png"/ width="10%" height="10%">
+                    <span>Report Harian</span>    
+                  </a>
+                </li>
+                <li class="treeview">
+                  <a href="mh_mingguan.php">
+                     <img src="../dist/img/yellow.png"/ width="10%" height="10%">
+                     <span>Report Mingguan</span>
+                  </a>
+                </li>
+                <li class="treeview">
+                  <a href="mh_bulanan.php">
+                     <img src="../dist/img/green.png"/ width="10%" height="10%">
+                     <span>Report Bulanan</span>
+                  </a>
+                </li>
+              </ul>
             </li>
+
             
-          
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -120,27 +141,9 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <table>
-            <tr>
-              <td>
-                <h1>
-                  Data Siswa
-                </h1>
-              </td>
-              <td>
-                <div class="col-md-4 pull-right">
-                  <form action="#" method="get" class="sidebar-form">
-                    <div class="input-group">
-                      <input type="text" name="q" class="form-control" placeholder="Cari..."/>
-                      <span class="input-group-btn">
-                        <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="glyphicon glyphicon-search"></i></button>
-                      </span>
-                    </div>
-                  </form>
-                </div>
-              </td>
-            </tr>
-          </table>
+          <h1>
+            Selamat Datang, Admin Melukis Harapan !
+          </h1>
         </section>
         
         <!-- Main content -->
@@ -148,157 +151,48 @@
           <!-- Info boxes -->
           <div class="row">
 
-          </div><!-- /.row -->
-
-          <!-- Main row -->
-          <div class="skrol" id="example">
-            <table class="table table-hover table-bordered stripe row-border order-column" cellspacing="0" width="100%">
-            <thead>
-              <tr>
-                  <th>Nama Lengkap</th>
-                  <th>Jenis Kelamin</th>
-                  <th>Tempat Lahir</th>
-                  <th>Tanggal Lahir</th>
-                  <th>Agama</th>
-                  <th>Anak ke -</th>
-                  <th>Alamat Siswa</th>
-                  <th>Tanggal Masuk</th>
-                  <th>Kelas</th>
-                  <th>Asal Sekolah</th>
-                  <th>Alamat Asal Sekolah</th>
-                  <th>Nama Ayah</th>
-                  <th>Nama Ibu</th>
-                  <th>Alamat Orang Tua</th>
-                  <th>Pekerjaan Ayah</th>
-                  <th>Pekerjaan Ibu</th>
-                  <th>Nama Kakak Asuh</th>
-                  <th>Alamat Kakak Asuh</th>
-                  <th>No Telp</th>
-              </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Peter</td>
-                    <td>Parker</td>
-                    <td>peterparker@mail.com</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>John</td>
-                    <td>Rambo</td>
-                    <td>johnrambo@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Peter</td>
-                    <td>Parker</td>
-                    <td>peterparker@mail.com</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>John</td>
-                    <td>Rambo</td>
-                    <td>johnrambo@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Peter</td>
-                    <td>Parker</td>
-                    <td>peterparker@mail.com</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>John</td>
-                    <td>Rambo</td>
-                    <td>johnrambo@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-            </tbody>
-            </table>
-          </div>
-          
-          
-              
-          
-
-        </section><!-- /.content -->
-      </div><!-- /.content-wrapper -->
+          </div> 
+        </section>
+      </div>
 
       <footer class="main-footer">
         <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Dolly Softwarehouse Ltd.</a></strong> All rights reserved.
       </footer>
 
     </div><!-- ./wrapper -->
-    <script>
-    $(document).ready(function() {
-    var table = $('#example').DataTable( {
-        scrollY:        "300px",
-        scrollX:        true,
-        scrollCollapse: true,
-        paging:         false
-    } );
- 
-    new $.fn.dataTable.FixedColumns( table, {
-        leftColumns: 6
-    } );
-} );
-    </script>
+    
 
     <script src="../dist/js/jQuery.js"></script>
     <script src="../dist/js/jquery.dataTables.js"></script>
     <script src="../dist/js/dataTables.fixedColumns.js"></script>
     <!-- jQuery 2.1.3 -->
-    <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <script src="../plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
-    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- FastClick -->
-    <script src='plugins/fastclick/fastclick.min.js'></script>
+    <script src='../plugins/fastclick/fastclick.min.js'></script>
     <!-- AdminLTE App -->
-    <script src="dist/js/app.min.js" type="text/javascript"></script>
+    <script src="../dist/js/app.min.js" type="text/javascript"></script>
     <!-- Sparkline -->
-    <script src="plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+    <script src="../plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
     <!-- jvectormap -->
-    <script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
-    <script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
+    <script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
+    <script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
     <!-- daterangepicker -->
-    <script src="plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+    <script src="../plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
     <!-- datepicker -->
-    <script src="plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="../plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
     <!-- iCheck -->
-    <script src="plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+    <script src="../plugins/iCheck/icheck.min.js" type="text/javascript"></script>
     <!-- SlimScroll 1.3.0 -->
-    <script src="plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="../plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
     <!-- ChartJS 1.0.1 -->
-    <script src="plugins/chartjs/Chart.min.js" type="text/javascript"></script>
+    <script src="../plugins/chartjs/Chart.min.js" type="text/javascript"></script>
 
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="dist/js/pages/dashboard2.js" type="text/javascript"></script>
+    <script src="../dist/js/pages/dashboard2.js" type="text/javascript"></script>
 
     <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js" type="text/javascript"></script>
+    <script src="../dist/js/demo.js" type="text/javascript"></script>
   </body>
 </html>

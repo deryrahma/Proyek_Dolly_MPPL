@@ -21,10 +21,10 @@
   <body class="login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="../index2.html"><b>Dolly</b>Care</a>
+        <a href="index.php"><b>Dolly</b>Care</a>
       </div>
       <div class="login-box-body">
-        <p class="login-box-msg">Sistem Informasi Kependudukan Dolly</p>
+        <p class="login-box-msg">Sistem Monitoring Penduduk Binaan Dolly</p>
         <form action="mh_panel.php" method="post">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Username" name="username"/>

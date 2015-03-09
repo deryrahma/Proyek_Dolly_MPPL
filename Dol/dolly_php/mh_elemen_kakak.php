@@ -23,7 +23,6 @@
     <link href="../dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
     <link href="../dist/css/dataTables.fixedColumns.css" rel="stylesheet" type="text/css" />
     <link href="../dist/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
-
     <style>
         /* Ensure that the demo table scrolls */
       th, td { white-space: nowrap; }
@@ -87,6 +86,7 @@
               <a href="mh_hapus_pilih.php"><i class="glyphicon glyphicon-trash"></i></a></span></center>
               <br/>
             <li class="header">MENU UTAMA</li>
+            
             <!-- Data Elemen -->
             <li class="treeview">
               <a href="#">
@@ -159,7 +159,7 @@
             <tr>
               <td>
                 <h1>
-                  Data Siswa Binaan
+                  Data Kakak Asuh
                 </h1>
               </td>
               <td>
@@ -189,7 +189,20 @@
                   <th>Tempat Lahir</th>
                   <th>Tanggal Lahir</th>
                   <th>Agama</th>
-                  <th>Edit</th>
+                  <th>Anak ke -</th>
+                  <th>Alamat Siswa</th>
+                  <th>Tanggal Masuk</th>
+                  <th>Kelas</th>
+                  <th>Asal Sekolah</th>
+                  <th>Alamat Asal Sekolah</th>
+                  <th>Nama Ayah</th>
+                  <th>Nama Ibu</th>
+                  <th>Alamat Orang Tua</th>
+                  <th>Pekerjaan Ayah</th>
+                  <th>Pekerjaan Ibu</th>
+                  <th>Nama Kakak Asuh</th>
+                  <th>Alamat Kakak Asuh</th>
+                  <th>No Telp</th>
               </tr>
               </thead>
             <tbody>
@@ -198,56 +211,42 @@
                     <td>John</td>
                     <td>Carter</td>
                     <td>johncarter@mail.com</td>
-                    <td>johncarter@mail.com</td>
-                    <td><a href="mh_edit.php"><i class="glyphicon glyphicon-trash"></i></a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Peter</td>
-                    <td>Parker</td>
-                    <td>johncarter@mail.com</td>
-                    <td>johncarter@mail.com</td>
-                   <td><a href="mh_edit.php"><i class="glyphicon glyphicon-trash"></i></a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>John</td>
-                    <td>Rambo</td>
-                    <td>johnrambo@mail.com</td>
-                    <td>johncarter@mail.com</td>
-                    <td><a href="mh_edit.php"><i class="glyphicon glyphicon-trash"></i></a></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                    <td>johncarter@mail.com</td>
-                    <td><a href="mh_edit.php"><i class="glyphicon glyphicon-trash"></i></a></td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>Peter</td>
                     <td>Parker</td>
                     <td>peterparker@mail.com</td>
-                    <td>johncarter@mail.com</td>
-                    <td><a href="mh_edit.php"><i class="glyphicon glyphicon-trash"></i></a></td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>John</td>
                     <td>Rambo</td>
                     <td>johnrambo@mail.com</td>
-                    <td>johncarter@mail.com</td>
-                    <td><a href="mh_edit.php"><i class="glyphicon glyphicon-trash"></i></a></td>
                 </tr>
                 <tr>
                     <td>1</td>
                     <td>John</td>
                     <td>Carter</td>
                     <td>johncarter@mail.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Peter</td>
+                    <td>Parker</td>
+                    <td>peterparker@mail.com</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>John</td>
+                    <td>Rambo</td>
+                    <td>johnrambo@mail.com</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>John</td>
+                    <td>Carter</td>
                     <td>johncarter@mail.com</td>
-                    <td><a href="mh_edit.php"><i class="glyphicon glyphicon-trash"></i></a></td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -356,7 +355,20 @@
       </footer>
 
     </div><!-- ./wrapper -->
-   
+    <script>
+    $(document).ready(function() {
+    var table = $('#example').DataTable( {
+        scrollY:        "1000px",
+        scrollX:        true,
+        scrollCollapse: true,
+        paging:         false
+    } );
+ 
+    new $.fn.dataTable.FixedColumns( table, {
+        leftColumns: 6
+    } );
+} );
+    </script>
 
     <script src="../dist/js/jQuery.js"></script>
     <script src="../dist/js/jquery.dataTables.js"></script>
