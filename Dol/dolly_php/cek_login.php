@@ -9,22 +9,20 @@ $user = $_POST['username'];
 $pass = $_POST['password'];
 
 $ada = false;
-$result = mysql_query("SELECT * FROM pemerintah");
+$result = mysql_query("SELECT * FROM kakak_asuh");
 while ($row = mysql_fetch_array($result)) {
 	if ($row['USERNAME'] == $user AND $row['PASSWORD'] == $pass) {
 		$ada = true;
-		if ($row['JABATAN'] == "lurah") {
-			header('lurah_panel.php');
-		} else if ($row['JABATAN'] == "rt") {
-			header('rt_panel.php');
+		if ($row['USERNAME'] == "admin") {
+			header('adm/adm_panel.php');
 		} else {
-			echo "anda RW";
+			header('mh/mh_panel.php');
 		}
 	}
 }
 
 if(!$ada){
-	echo "username / password salah";
+	header('index.php');
 }
 
 ?>
