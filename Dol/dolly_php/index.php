@@ -1,7 +1,15 @@
-<!--  <?php
-  // include 'connection.php';
-  // session_start();
-?> -->
+<?php
+  include 'connection.php';
+  session_start();
+  if (isset($_SESSION['username'])) {
+    //echo $_SESSION['username'];
+    if ($_SESSION['username'] == "admin") {
+      header('location:adm/adm_panel.php');
+    } else {
+      header('location:mh/mh_panel.php');
+    }
+  }
+?>
 <!DOCTYPE html>
 <html>
   <head>
