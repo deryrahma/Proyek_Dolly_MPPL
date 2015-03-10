@@ -24,5 +24,6 @@
 	$sql = 'INSERT INTO anak_binaan	VALUES ("", "' . $id_kakak . '","' . $nama_anak . '","' . $jk_anak . '","' . $tempat_lahir . '","' . $tanggal_lahir . '","' . $agama . '","' . $anak_ke . '","' . $alamat_siswa . '","' . $tanggal_masuk . '","' . $kelas . '","' . $sekolah_asal . '","' . $nama_sekolah . '","' . $alamat_sekolah . '","' . $nama_ayah . '","' . $nama_ibu . '","' . $alamat_ortu . '","' . $pekerjaan_ayah . '","' . $pekerjaan_ibu . '")';
 
 	mysql_query($sql);
+	header('location:mh_input.php');
 
 ?>

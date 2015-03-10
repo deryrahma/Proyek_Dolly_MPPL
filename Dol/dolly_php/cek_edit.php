@@ -26,4 +26,5 @@
 
 	mysql_query($sql);
 	echo $sql;
+	header('location:mh_edit_pilih.php');
 ?>
