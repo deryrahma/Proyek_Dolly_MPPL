@@ -5,25 +5,25 @@
     <title>Admin DollyCare | Dashboard</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
-    <link href="../dist/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../dist/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
-    <link href="../dist/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../dist/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Morris chart -->
-    <link href="../plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+    <link href="../../plugins/morris/morris.css" rel="stylesheet" type="text/css" />
     <!-- jvectormap -->
-    <link href="../plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+    <link href="../../plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
     <!-- Daterange picker -->
-    <link href="../plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
-    <link href="../plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <link href="../../plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <link href="../../plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
-    <link href="../dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
-    <link href="../dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
-    <link href="../dist/css/dataTables.fixedColumns.css" rel="stylesheet" type="text/css" />
-    <link href="../dist/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <link href="../../dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../dist/css/dataTables.fixedColumns.css" rel="stylesheet" type="text/css" />
+    <link href="../../dist/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -74,7 +74,7 @@
         <section class="sidebar">
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="../dist/img/user.png" alt="User Image"/>
+              <img src="../../dist/img/user.png" alt="User Image"/>
             </div>
             <div class="pull-left info">
               <h4>Admin</h4>
@@ -90,13 +90,13 @@
             <li class="header">MENU UTAMA</li>
             <li class="treeview">
               <a href="mh_panel.php">
-                <img src="../dist/img/population.png"/ width="10%" height="10%">
+                <img src="../../dist/img/population.png"/ width="10%" height="10%">
                 <span>Data Siswa</span>
               </a>
             </li>
             <li class="treeview">
               <a href="mh_harian.php">
-                 <img src="../dist/img/red.png"/ width="10%" height="10%">
+                 <img src="../../dist/img/red.png"/ width="10%" height="10%">
                 <span>Report Harian</span>
                 
               </a>
@@ -104,13 +104,13 @@
             </li>
             <li class="active treeview">
               <a href="mh_mingguan.php">
-                 <img src="../dist/img/yellow.png"/ width="10%" height="10%">
+                 <img src="../../dist/img/yellow.png"/ width="10%" height="10%">
                  <span>Report Mingguan</span>
               </a>
             </li>
             <li>
               <a href="mh_bulanan.php">
-                 <img src="../dist/img/green.png"/ width="10%" height="10%">
+                 <img src="../../dist/img/green.png"/ width="10%" height="10%">
                  <span>Report Bulanan</span>
               </a>
             </li>
@@ -221,9 +221,9 @@
 } );
     </script>
 
-    <script src="../dist/js/jQuery.js"></script>
-    <script src="../dist/js/jquery.dataTables.js"></script>
-    <script src="../dist/js/dataTables.fixedColumns.js"></script>
+    <script src="../../dist/js/jQuery.js"></script>
+    <script src="../../dist/js/jquery.dataTables.js"></script>
+    <script src="../../dist/js/dataTables.fixedColumns.js"></script>
     <!-- jQuery 2.1.3 -->
     <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
