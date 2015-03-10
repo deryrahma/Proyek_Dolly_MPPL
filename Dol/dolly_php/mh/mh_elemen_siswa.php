@@ -5,24 +5,24 @@
     <title>Admin DollyCare | Dashboard</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
-    <link href="../dist/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../dist/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
-    <link href="../dist/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../dist/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Morris chart -->
-    <link href="../plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+    <link href="../../plugins/morris/morris.css" rel="stylesheet" type="text/css" />
     <!-- jvectormap -->
-    <link href="../plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+    <link href="../../plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
     <!-- Daterange picker -->
-    <link href="../plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <link href="../../plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
-    <link href="../dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
-    <link href="../dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
-    <link href="../dist/css/dataTables.fixedColumns.css" rel="stylesheet" type="text/css" />
-    <link href="../dist/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <link href="../../dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../dist/css/dataTables.fixedColumns.css" rel="stylesheet" type="text/css" />
+    <link href="../../dist/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
     <style>
         /* Ensure that the demo table scrolls */
       th, td { white-space: nowrap; }
@@ -72,7 +72,7 @@
         <section class="sidebar">
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="../dist/img/user.png" alt="User Image"/>
+              <img src="../../dist/img/user.png" alt="User Image"/>
             </div>
             <div class="pull-left info">
               <h4>Admin</h4>
@@ -89,20 +89,20 @@
             <!-- Data Elemen -->
             <li class="treeview">
               <a href="#">
-                <img src="../dist/img/population.png"/ width="10%" height="10%">
+                <img src="../../dist/img/population.png"/ width="10%" height="10%">
                 <span>Data Elemen</span>
                 <i class="glyphicon glyphicon-chevron-down pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li class="treeview">
                   <a href="mh_elemen_kakak.php">
-                     <img src="../dist/img/kakak-icon.png"/ width="10%" height="10%">
+                     <img src="../../dist/img/kakak-icon.png"/ width="10%" height="10%">
                     <span>Kakak Asuh</span>    
                   </a>
                 </li>
                 <li class="treeview">
                   <a href="mh_elemen_siswa.php">
-                     <img src="../dist/img/siswa-icon.ico"/ width="10%" height="10%">
+                     <img src="../../dist/img/siswa-icon.ico"/ width="10%" height="10%">
                      <span>Siswa Binaan</span>
                   </a>
                 </li>
@@ -112,7 +112,7 @@
             <!-- Pelatihan -->
             <li class="treeview">
               <a href="mh_pelatihan.php">
-                <img src="../dist/img/training-icon.png"/ width="10%" height="10%">
+                <img src="../../dist/img/training-icon.png"/ width="10%" height="10%">
                 <span>Pelatihan</span>
               </a>
             </li>
@@ -120,26 +120,26 @@
             <!-- Report -->
             <li class="treeview">
               <a href="#">
-                <img src="../dist/img/doc-icon.png"/ width="10%" height="10%">
+                <img src="../../dist/img/doc-icon.png"/ width="10%" height="10%">
                 <span>Report</span>
                 <i class="glyphicon glyphicon-chevron-down pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li class="treeview">
                   <a href="mh_harian.php">
-                     <img src="../dist/img/red.png"/ width="10%" height="10%">
+                     <img src="../../dist/img/red.png"/ width="10%" height="10%">
                     <span>Report Harian</span>    
                   </a>
                 </li>
                 <li class="treeview">
                   <a href="mh_mingguan.php">
-                     <img src="../dist/img/yellow.png"/ width="10%" height="10%">
+                     <img src="../../dist/img/yellow.png"/ width="10%" height="10%">
                      <span>Report Mingguan</span>
                   </a>
                 </li>
                 <li class="treeview">
                   <a href="mh_bulanan.php">
-                     <img src="../dist/img/green.png"/ width="10%" height="10%">
+                     <img src="../../dist/img/green.png"/ width="10%" height="10%">
                      <span>Report Bulanan</span>
                   </a>
                 </li>
@@ -369,37 +369,37 @@
 } );
     </script>
 
-    <script src="../dist/js/jQuery.js"></script>
-    <script src="../dist/js/jquery.dataTables.js"></script>
-    <script src="../dist/js/dataTables.fixedColumns.js"></script>
+    <script src="../../dist/js/jQuery.js"></script>
+    <script src="../../dist/js/jquery.dataTables.js"></script>
+    <script src="../../dist/js/dataTables.fixedColumns.js"></script>
     <!-- jQuery 2.1.3 -->
-    <script src="../plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <script src="../../plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
-    <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- FastClick -->
-    <script src='../plugins/fastclick/fastclick.min.js'></script>
+    <script src='../../plugins/fastclick/fastclick.min.js'></script>
     <!-- AdminLTE App -->
-    <script src="../dist/js/app.min.js" type="text/javascript"></script>
+    <script src="../../dist/js/app.min.js" type="text/javascript"></script>
     <!-- Sparkline -->
-    <script src="../plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+    <script src="../../plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
     <!-- jvectormap -->
-    <script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
-    <script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
+    <script src="../../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
+    <script src="../../plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
     <!-- daterangepicker -->
-    <script src="../plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+    <script src="../../plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
     <!-- datepicker -->
-    <script src="../plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="../../plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
     <!-- iCheck -->
-    <script src="../plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+    <script src="../../plugins/iCheck/icheck.min.js" type="text/javascript"></script>
     <!-- SlimScroll 1.3.0 -->
-    <script src="../plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="../../plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
     <!-- ChartJS 1.0.1 -->
-    <script src="../plugins/chartjs/Chart.min.js" type="text/javascript"></script>
+    <script src="../../plugins/chartjs/Chart.min.js" type="text/javascript"></script>
 
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="../dist/js/pages/dashboard2.js" type="text/javascript"></script>
+    <script src="../../dist/js/pages/dashboard2.js" type="text/javascript"></script>
 
     <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js" type="text/javascript"></script>
+    <script src="../../dist/js/demo.js" type="text/javascript"></script>
   </body>
 </html>

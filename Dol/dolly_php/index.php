@@ -25,7 +25,7 @@
       </div>
       <div class="login-box-body">
         <p class="login-box-msg">Sistem Monitoring Penduduk Binaan Dolly</p>
-        <form action="mh_panel.php" method="post">
+        <form action="cek_login.php" method="post">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Username" name="username"/>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
