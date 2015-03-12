@@ -177,7 +177,7 @@
 
            <?php
             $ID_ANAK = $_GET['id_anak'];
-            include "connection.php";
+            include "../connection.php";
             $query = "SELECT * FROM anak_binaan WHERE ID_ANAK = " . $ID_ANAK;
             $result = mysql_query($query);
             if($result)

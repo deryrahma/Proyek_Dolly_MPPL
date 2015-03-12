@@ -195,7 +195,7 @@
               </thead>
             <tbody>
                 <?php
-                include "connection.php";
+                include "../connection.php";
                 $query = "SELECT * FROM anak_binaan";
                 $result = mysql_query($query);
                 if($result)

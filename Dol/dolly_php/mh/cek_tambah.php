@@ -1,6 +1,6 @@
 <?php
 	
-	include "connection.php";
+	include "../connection.php";
 
 	$id_kakak = $_POST['id_kakak'];
 	$nama_anak = $_POST['nama_anak'];
@@ -22,6 +22,8 @@
 	$pekerjaan_ibu = $_POST['pekerjaan_ibu'];
 
 	$sql = 'INSERT INTO anak_binaan	VALUES ("", "' . $id_kakak . '","' . $nama_anak . '","' . $jk_anak . '","' . $tempat_lahir . '","' . $tanggal_lahir . '","' . $agama . '","' . $anak_ke . '","' . $alamat_siswa . '","' . $tanggal_masuk . '","' . $kelas . '","' . $sekolah_asal . '","' . $nama_sekolah . '","' . $alamat_sekolah . '","' . $nama_ayah . '","' . $nama_ibu . '","' . $alamat_ortu . '","' . $pekerjaan_ayah . '","' . $pekerjaan_ibu . '")';
+
+	//echo $sql;
 
 	mysql_query($sql);
 	header('location:mh_input.php');
