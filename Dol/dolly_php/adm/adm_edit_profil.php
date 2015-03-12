@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Kakak Asuh DollyCare | Dashboard</title>
+    <title>Admin DollyCare | Dashboard</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -30,7 +30,7 @@
       
       <header class="main-header">
         <!-- Logo -->
-        <a href="mh_panel.php" class="logo"><b>Dolly</b>Care</a>
+        <a href="adm_panel.php" class="logo"><b>Dolly</b>Care</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
 
@@ -65,74 +65,70 @@
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <center><span style="color:#fff;"><a href="mh_input.php"><i class="glyphicon glyphicon-plus">&nbsp;&nbsp;&nbsp;</i></a>
-              <a href="mh_edit_pilih.php"><i class="glyphicon glyphicon-pencil">&nbsp;&nbsp;&nbsp;</i></a>
-              <a href="mh_hapus_pilih.php"><i class="glyphicon glyphicon-trash"></i></a></span></center>
-              <br/>
+            
             <li class="header">MENU UTAMA</li>    
 
-            <!-- Data Elemen -->
+            <!-- Profil Diri -->
             <li class="treeview">
-              <a href="mh_edit_kakak.php">
-                <img src="../../dist/img/icon2.png"/ width="10%" height="10%">
-                <span>Profil</span>
+              <a href="adm_profil_diri.php">
+                <img src="../../dist/img/profile-icon.png"/ width="10%" height="10%">
+                <span>Profil Diri</span>
               </a>
             </li>
 
+            <!-- Manajemen Kakak Asuh -->
             <li class="treeview">
               <a href="#">
-                <img src="../../dist/img/population.png"/ width="10%" height="10%">
-                <span>Data Elemen</span>
+                <img src="../../dist/img/kasuh-icon.png"/ width="10%" height="10%">
+                <span>Manajemen Kakak Asuh</span>
                 <i class="glyphicon glyphicon-chevron-down pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li class="treeview">
-                  <a href="mh_elemen_kakak.php">
-                     <img src="../../dist/img/kakak-icon.png"/ width="10%" height="10%">
-                    <span>Kakak Asuh</span>    
+                  <a href="adm_lihat_kakak.php">
+                     <i class="glyphicon glyphicon-eye-open"></i>
+                    <span>Lihat Kakak Asuh</span>    
                   </a>
                 </li>
                 <li class="treeview">
-                  <a href="mh_elemen_siswa.php">
-                     <img src="../../dist/img/siswa-icon.ico"/ width="10%" height="10%">
-                     <span>Siswa Binaan</span>
+                  <a href="adm_tambah_kakak.php">
+                     <i class="glyphicon glyphicon-plus"></i>
+                     <span>Tambah Kakak Asuh</span>
+                  </a>
+                </li>
+                <li class="treeview">
+                  <a href="adm_hapus_kakak.php">
+                     <i class="glyphicon glyphicon-trash"></i>
+                     <span>Hapus Kakak Asuh</span>
                   </a>
                 </li>
               </ul>
             </li>
 
-            <!-- Pelatihan -->
-            <li class="treeview">
-              <a href="mh_pelatihan.php">
-                <img src="../../dist/img/training-icon.png"/ width="10%" height="10%">
-                <span>Pelatihan</span>
-              </a>
-            </li>
-
-            <!-- Report -->
+            <!-- Manajemen Pelatihan -->
             <li class="treeview">
               <a href="#">
-                <img src="../../dist/img/doc-icon.png"/ width="10%" height="10%">
-                <span>Report</span>
+                <img src="../../dist/img/training-icon.png"/ width="10%" height="10%">
+                <span>Manajemen Pelatihan</span>
                 <i class="glyphicon glyphicon-chevron-down pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li class="treeview">
-                  <a href="mh_harian.php">
-                     <img src="../../dist/img/red.png"/ width="10%" height="10%">
-                    <span>Report Harian</span>    
+                  <a href="adm_lihat_pelatihan.php">
+                     <i class="glyphicon glyphicon-eye-open"></i>
+                    <span>Lihat Pelatihan</span>    
                   </a>
                 </li>
                 <li class="treeview">
-                  <a href="mh_mingguan.php">
-                     <img src="../../dist/img/yellow.png"/ width="10%" height="10%">
-                     <span>Report Mingguan</span>
+                  <a href="adm_tambah_pelatihan.php">
+                     <i class="glyphicon glyphicon-plus"></i>
+                     <span>Tambah Pelatihan</span>
                   </a>
                 </li>
                 <li class="treeview">
-                  <a href="mh_bulanan.php">
-                     <img src="../../dist/img/green.png"/ width="10%" height="10%">
-                     <span>Report Bulanan</span>
+                  <a href="adm_hapus_pelatihan.php">
+                     <i class="glyphicon glyphicon-trash"></i>
+                     <span>Hapus Pelatihan</span>
                   </a>
                 </li>
               </ul>

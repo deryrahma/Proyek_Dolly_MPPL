@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Admin DollyCare | Dashboard</title>
+    <title>Kakak Asuh DollyCare | Dashboard</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -59,7 +59,7 @@
               <img src="../../dist/img/user.png" alt="User Image"/>
             </div>
             <div class="pull-left info">
-              <h4>Admin</h4>
+              <h4>Kakak Asuh</h4>
             </div>
           </div>
           <!-- /.search form -->
