@@ -23,22 +23,6 @@
     <link href="../../dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
     <link href="../../dist/css/dataTables.fixedColumns.css" rel="stylesheet" type="text/css" />
     <link href="../../dist/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
-    <style>
-        /* Ensure that the demo table scrolls */
-      th, td { white-space: nowrap; }
-      
-      #table1 {
-        overflow: auto;
-        height: 100px;
-        display: inline-block;
-      }
-
-      #table2 {
-        overflow: auto;
-        height: 300px;
-        display: inline-block;
-      }
-    </style>
   </head>
 
   <body class="skin-blue">
@@ -85,8 +69,8 @@
               <a href="mh_edit_pilih.php"><i class="glyphicon glyphicon-pencil">&nbsp;&nbsp;&nbsp;</i></a>
               <a href="mh_hapus_pilih.php"><i class="glyphicon glyphicon-trash"></i></a></span></center>
               <br/>
-            <li class="header">MENU UTAMA</li>
-            
+            <li class="header">MENU UTAMA</li>    
+
             <!-- Data Elemen -->
             <li class="treeview">
               <a href="mh_edit_kakak.php">
@@ -94,7 +78,7 @@
                 <span>Profil</span>
               </a>
             </li>
-            
+
             <li class="treeview">
               <a href="#">
                 <img src="../../dist/img/population.png"/ width="10%" height="10%">
@@ -153,97 +137,106 @@
                 </li>
               </ul>
             </li>
+
+            
           </ul>
         </section>
         <!-- /.sidebar -->
       </aside>
 
-      <!-- Right side column. Contains the navbar and content of the page -->
-      <div class="content-wrapper">
+       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <table id="table1">
-            <tr>
-              <td>
-                <h1>
-                  Data Kakak Asuh
-                </h1>
-              </td>
-              <td>
-                <div class="col-md-4 pull-right">
-                  <form action="#" method="get" class="sidebar-form">
-                    <div class="input-group">
-                      <input type="text" name="q" class="form-control" placeholder="Cari..."/>
-                      <span class="input-group-btn">
-                        <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="glyphicon glyphicon-search"></i></button>
-                      </span>
-                    </div>
-                  </form>
-                </div>
-              </td>
-            </tr>
-          </table>
+          <h1>
+            <center>Edit Profil Kakak Asuh</center><hr>
+          </h1>
         </section>
-
-       
+        
+        
         <!-- Main content -->
         <section class="content">
-          <div class="row"><center>
-            <table id="table2" class="table table-hover table-bordered stripe row-border order-column" cellspacing="0" width="100%">
-              <thead>
-              <tr>
-                  <th>Naama Lengkap</th>
-                  <th>Alamat Rumah</th>
-                  <th>No Telpon</th>
-                  <th>Anak Binaan</th>
-              </tr>
-              </thead>
-            <tbody>
-                <?php
-                include "../connection.php";
-                $query = "SELECT * FROM kakak_asuh, anak_binaan where anak_binaan.id_kakak = kakak_asuh.id_kakak";
-                $result = mysql_query($query);
-                if($result)
+          <!-- Info boxes -->
+          <div class="row">
+
+            
+
+          </div><!-- /.row -->
+
+           <?php
+            $ID_KAKAK = $_GET['id_kakak'];
+            include "../connection.php";
+            $query = "SELECT * FROM kakak_asuh WHERE ID_KAKAK = " . $ID_KAKAK;
+            $result = mysql_query($query);
+            if($result)
+            {
+                while($row = mysql_fetch_array($result))
                 {
-                    while($row = mysql_fetch_array($result))
-                    {
-                      //echo $row['ID_KAKAK'] . "<br>";
-                      echo "<tr>\n\t";
-                      echo "<td>" . $row['NAMA_KAKAK'] . "</td>\n\t";
-                      echo "<td>" . $row['ALAMAT_KAKAK'] . "</td>\n\t";
-                      echo "<td>" . $row['NO_TELPON_KAKAK'] . "</td>\n\t";
-                      echo "<td>" . $row['NAMA_ANAK'] . "</td>\n\t";
-                    }
-                } else {
-                    echo 'Invalid query: ' . mysql_error() . "\n";
-                    echo 'Whole query: ' . $query; 
+                  $nama_kakak = $row['NAMA_KAKAK'];
+                  $alamat_kakak = $row['ALAMAT_KAKAK'];
+                  $no_telp_kakak = $row['NO_TELPON_KAKAK'];
+                  $username = $row['USERNAME'];
+                  $password = $row['PASSWORD'];
                 }
-              ?>
-            </tbody>
-            </table></center>
+            } else {
+                echo 'Invalid query: ' . mysql_error() . "\n";
+                echo 'Whole query: ' . $query; 
+            }
+          ?>
+
+          <!-- Main row -->
+          <div class="row">
+          
+            <form class="form-horizontal" action="cek_edit.php" method="post">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Nama Lengkap</label>
+                <div class="col-sm-6">
+                  <input type="hidden" name="nama_kakak" value=<?php echo $nama_kakak; ?>>
+                  <input type="text" class="form-control" name="nama_kakak" placeholder="Nama lengkap kakak asuh" value=<?php echo "\"" . $nama_kakak . "\""; ?>>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Alamat Rumah</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" name="alamat_kakak" placeholder="Alamat kakak asuh" value=<?php echo "\"" . $alamat_kakak . "\""; ?>>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">No Telpon Kakak Asuh</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" name="no_telp_kakak" placeholder="No telp kakak asuh" value=<?php echo "\"" . $no_telp_kakak . "\""; ?>>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Username</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" name="username" placeholder="Username" value=<?php echo "\"" . $username . "\""; ?>>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Password</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" name="password" placeholder="Password" value=<?php echo "\"" . $password . "\""; ?>>
+                </div>
+              </div>
+             
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-10">
+                  <button type="submit" class="btn btn-success">UPDATE</button>
+                  <button type="reset" class="btn btn-danger">Batal</button>
+                </div>
+              </div>
+            </form>
+          
           </div>
-        </section><!-- /.content -->
-      </div><!-- /.content-wrapper -->
+
 
       <footer class="main-footer">
         <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Dolly Softwarehouse Ltd.</a></strong> All rights reserved.
       </footer>
 
     </div><!-- ./wrapper -->
-    <script>
-    $(document).ready(function() {
-    var table = $('#example').DataTable( {
-        scrollY:        "1000px",
-        scrollX:        true,
-        scrollCollapse: true,
-        paging:         false
-    } );
- 
-    new $.fn.dataTable.FixedColumns( table, {
-        leftColumns: 6
-    } );
-} );
-    </script>
+    
 
     <script src="../../dist/js/jQuery.js"></script>
     <script src="../../dist/js/jquery.dataTables.js"></script>

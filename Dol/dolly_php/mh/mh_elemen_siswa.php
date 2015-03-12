@@ -88,6 +88,13 @@
             <li class="header">MENU UTAMA</li>
             <!-- Data Elemen -->
             <li class="treeview">
+              <a href="mh_edit_kakak.php">
+                <img src="../../dist/img/icon2.png"/ width="10%" height="10%">
+                <span>Profil</span>
+              </a>
+            </li>
+            
+            <li class="treeview">
               <a href="#">
                 <img src="../../dist/img/population.png"/ width="10%" height="10%">
                 <span>Data Elemen</span>
@@ -178,8 +185,8 @@
         </section>
         
         <!-- Main content -->
-        <section class="content">
-          <div class="row">
+       <section class="content">
+          <div class="row"><center>
             <table id="table2" class="table table-hover table-bordered stripe row-border order-column" cellspacing="0" width="100%">
               <thead>
               <tr>
@@ -201,148 +208,47 @@
                   <th>Pekerjaan Ibu</th>
                   <th>Nama Kakak Asuh</th>
                   <th>Alamat Kakak Asuh</th>
-                  <th>No Telp</th>
               </tr>
               </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Peter</td>
-                    <td>Parker</td>
-                    <td>peterparker@mail.com</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>John</td>
-                    <td>Rambo</td>
-                    <td>johnrambo@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Peter</td>
-                    <td>Parker</td>
-                    <td>peterparker@mail.com</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>John</td>
-                    <td>Rambo</td>
-                    <td>johnrambo@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Peter</td>
-                    <td>Parker</td>
-                    <td>peterparker@mail.com</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>John</td>
-                    <td>Rambo</td>
-                    <td>johnrambo@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                </tr>
+                <?php
+                include "../connection.php";
+                $query = "SELECT * FROM anak_binaan, kakak_asuh where anak_binaan.id_kakak = kakak_asuh.id_kakak";
+                $result = mysql_query($query);
+                if($result)
+                {
+                    while($row = mysql_fetch_array($result))
+                    {
+                      //echo $row['ID_KAKAK'] . "<br>";
+                      echo "<tr>\n\t";
+                      echo "<td>" . $row['NAMA_ANAK'] . "</td>\n\t";
+                      echo "<td>" . $row['JK_ANAK'] . "</td>\n\t";
+                      echo "<td>" . $row['TEMPAT_LAHIR'] . "</td>\n\t";
+                      echo "<td>" . $row['TANGGAL_LAHIR'] . "</td>\n\t";
+                      echo "<td>" . $row['AGAMA'] . "</td>\n\t";
+                      echo "<td>" . $row['ANAK_KE'] . "</td>\n\t";
+                      echo "<td>" . $row['ALAMAT_SISWA'] . "</td>\n\t";
+                      echo "<td>" . $row['TANGGAL_MASUK'] . "</td>\n\t";
+                      echo "<td>" . $row['KELAS'] . "</td>\n\t";
+                      echo "<td>" . $row['SEKOLAH_ASAL'] . "</td>\n\t";
+                      echo "<td>" . $row['ALAMAT_SEKOLAH'] . "</td>\n\t";
+                      echo "<td>" . $row['NAMA_AYAH'] . "</td>\n\t";
+                      echo "<td>" . $row['NAMA_IBU'] . "</td>\n\t";
+                      echo "<td>" . $row['ALAMAT_ORTU'] . "</td>\n\t";
+                      echo "<td>" . $row['PEKERJAAN_AYAH'] . "</td>\n\t";
+                      echo "<td>" . $row['PEKERJAAN_IBU'] . "</td>\n\t";
+                      echo "<td>" . $row['NAMA_KAKAK'] . "</td>\n\t";
+                      echo "<td>" . $row['ALAMAT_KAKAK'] . "</td>\n\t";
+                    }
+                } else {
+                    echo 'Invalid query: ' . mysql_error() . "\n";
+                    echo 'Whole query: ' . $query; 
+                }
+              ?>
+            </tbody>
+            </table></center>
+          </div>
+        </section><!-- /.content -->
             </tbody>
             </table>
           </div>
