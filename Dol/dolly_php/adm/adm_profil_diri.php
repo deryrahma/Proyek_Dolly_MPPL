@@ -144,45 +144,36 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            <center>Edit Profil Kakak Asuh</center><hr>
+            <center>Profil Diri Kakak Asuh</center><hr>
           </h1>
         </section>
         
         
         <!-- Main content -->
         <section class="content">
-          <!-- Info boxes -->
+
+          <!-- Main row -->
           <div class="row">
-
-            
-
-          </div><!-- /.row -->
-
-           <?php
+            <?php
             $ID_KAKAK = $_GET['id_kakak'];
             include "../connection.php";
-            $query = "SELECT * FROM kakak_asuh WHERE ID_KAKAK = " . $ID_KAKAK;
+            $query = "SELECT * FROM KAKAK_ASUH WHERE ID_KAKAK = " . " \"$ID_KAKAK\" ";
             $result = mysql_query($query);
             if($result)
             {
                 while($row = mysql_fetch_array($result))
                 {
-                  $nama_kakak = $row['NAMA_KAKAK'];
-                  $alamat_kakak = $row['ALAMAT_KAKAK'];
-                  $no_telp_kakak = $row['NO_TELPON_KAKAK'];
-                  $username = $row['USERNAME'];
-                  $password = $row['PASSWORD'];
+                  echo "<label>Nama Kakak:\t</label>" . $row['NAMA_KAKAK'] . "<br>";
+                  echo "<label>Alamat Kakak:\t</label>" . $row['ALAMAT_KAKAK'] . "<br>";
+                  echo "<label>No. Telpon Kakak:\t</label>" . $row['NO_TELPON_KAKAK'] . "<br>";
                 }
             } else {
                 echo 'Invalid query: ' . mysql_error() . "\n";
                 echo 'Whole query: ' . $query; 
             }
           ?>
-
-          <!-- Main row -->
-          <div class="row">
           
-            <form class="form-horizontal" action="cek_edit.php" method="post">
+            <!--<form class="form-horizontal" action="cek_edit.php" method="post">
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Nama Lengkap</label>
                 <div class="col-sm-6">
@@ -222,7 +213,7 @@
                   <button type="reset" class="btn btn-danger">Batal</button>
                 </div>
               </div>
-            </form>
+            </form>-->
           
           </div>
 

@@ -145,7 +145,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Selamat Datang, Admin Melukis Harapan !
+            Penambahan Daftar Pelatihan
           </h1>
         </section>
         
@@ -153,6 +153,20 @@
         <section class="content">
           <!-- Info boxes -->
           <div class="row">
+            <form class="form-horizontal" action="adm_cek_tambah_pelatihan.php" method="post">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Nama Pelatihan</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" name="nama_pelatihan" placeholder="Nama pelatihan">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-10">
+                  <button type="submit" class="btn btn-success">Tambah</button>
+                  <button type="reset" class="btn btn-danger">Batal</button>
+                </div>
+              </div>
+            </form>
 
           </div> 
         </section>

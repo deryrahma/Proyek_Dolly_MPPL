@@ -145,45 +145,50 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Daftar Pelatihan Kampung Binaan Dolly
+            Input Parameter
           </h1>
         </section>
         
         <!-- Main content -->
         <section class="content">
           <!-- Info boxes -->
-          <div class="row"><center>
-            <table id="table2" class="table table-hover table-bordered stripe row-border order-column" cellspacing="0" width="100%">
-              <thead>
-              <tr>
-                  <th>No.</th>
-                  <th>Nama Pelatihan</th>
-              </tr>
-              </thead>
-            <tbody>
-                <?php
-                include "../connection.php";
-                $query = "SELECT * FROM pelatihan";
-                $result = mysql_query($query);
-                $i = 0;
-                if($result)
+          <div class="row">
+            <?php
+              include "../connection.php";
+              $nama_pel = $_GET['nama_pelatihan'];
+              $query = "SELECT * FROM PELATIHAN WHERE NAMA_PELATIHAN=" . " \"$nama_pel\" ";
+              $result = mysql_query($query);
+              if($result)
                 {
                     while($row = mysql_fetch_array($result))
                     {
                       //echo $row['ID_KAKAK'] . "<br>";
-                      $i++;
-                      echo "<tr>\n\t";
-                      echo "<td>" . $i . "</td>\n\t";
-                      echo "<td>" . $row['NAMA_PELATIHAN'] . "</td>\n\t";
+                      $id_pelatihan = $row['ID_PELATIHAN'];
+                      //$nama_pelatihan = $row['NAMA_PELATIHAN'];
                     }
                 } else {
                     echo 'Invalid query: ' . mysql_error() . "\n";
                     echo 'Whole query: ' . $query; 
                 }
-              ?>
-            </tbody>
-            </table></center>
-              
+            ?>
+            <center><label>Nama Pelatihan: <?php echo $nama_pel ?></label></center><br>
+            <form class="form-horizontal" action="adm_cek_tambah_parameter.php" method="post">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Nama Parameter</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" name="nama_parameter" placeholder="Nama parameter">
+                  <input type="hidden" name="id_pelatihan" value="<?php echo $id_pelatihan ?>">
+                  <input type="hidden" name="nama_pelatihan" value="<?php echo $nama_pel ?>">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-10">
+                  <button type="submit" class="btn btn-success">Tambah Parameter</button>
+                  <button type="reset" class="btn btn-danger"><a href="adm_panel.php">Selesai</a></button>
+                </div>
+              </div>
+            </form>
+
           </div> 
         </section>
       </div>

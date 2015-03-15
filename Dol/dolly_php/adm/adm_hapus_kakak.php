@@ -152,8 +152,43 @@
         <!-- Main content -->
         <section class="content">
           <!-- Info boxes -->
-          <div class="row">
-
+          <div class="row"><center>
+            <table id="table2" class="table table-hover table-bordered stripe row-border order-column" cellspacing="0" width="100%">
+              <thead>
+              <tr>
+                  <th>No.</th>
+                  <th>Nama Kakak Asuh</th>
+                  <th>Alamat Kakak Asuh</th>
+                  <th>No. Telpon Kakak Asuh</th>
+                  <th>Hapus</th>
+              </tr>
+              </thead>
+            <tbody>
+                <?php
+                include "../connection.php";
+                $query = "SELECT * FROM kakak_asuh";
+                $result = mysql_query($query);
+                $i = 0;
+                if($result)
+                {
+                    while($row = mysql_fetch_array($result))
+                    {
+                      //echo $row['ID_KAKAK'] . "<br>";
+                      $i++;
+                      echo "<tr>\n\t";
+                      echo "<td>" . $i . "</td>\n\t";
+                      echo "<td>" . $row['NAMA_KAKAK'] . "</td>\n\t";
+                      echo "<td>" . $row['ALAMAT_KAKAK'] . "</td>\n\t";
+                      echo "<td>" . $row['NO_TELPON_KAKAK'] . "</td>\n\t";
+                      echo "<td><a href=\"adm_hapus_k.php?id_kakak=" . $row['ID_KAKAK'] . "\"><i class=\"glyphicon glyphicon-trash\"></i></a></td>\n\t";
+                    }
+                } else {
+                    echo 'Invalid query: ' . mysql_error() . "\n";
+                    echo 'Whole query: ' . $query; 
+                }
+              ?>
+            </tbody>
+            </table></center>
           </div> 
         </section>
       </div>

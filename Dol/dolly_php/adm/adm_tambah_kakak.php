@@ -145,15 +145,56 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Selamat Datang, Admin Melukis Harapan !
+            <center>Penambahan Kakak Asuh Baru</center><hr>
           </h1>
         </section>
         
         <!-- Main content -->
         <section class="content">
-          <!-- Info boxes -->
+          
+          <!-- Main row -->
           <div class="row">
-
+          
+            <form class="form-horizontal" action="adm_cek_tambah_kakak.php" method="post">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Nama Kakak Asuh</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" name="nama_kasuh" placeholder="Nama lengkap kakak asuh">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Alamat Kakak Asuh</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" name="alamat_kasuh" placeholder="Alamat kakak asuh">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">No. Telp Kakak Asuh</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" name="telp_kasuh" placeholder="No. telepon kakak asuh">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Username</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" name="username" placeholder="Username">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Password</label>
+                <div class="col-sm-6">
+                  <input type="password" class="form-control" name="password" placeholder="Password">
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-10">
+                  <button type="submit" class="btn btn-success">Tambah</button>
+                  <button type="reset" class="btn btn-danger">Batal</button>
+                </div>
+              </div>
+            </form>
+          
           </div> 
         </section>
       </div>

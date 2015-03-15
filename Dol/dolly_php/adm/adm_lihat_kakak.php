@@ -189,27 +189,31 @@
             <table id="table2" class="table table-hover table-bordered stripe row-border order-column" cellspacing="0" width="100%">
               <thead>
               <tr>
+                  <th>No.</th>
                   <th>Nama Lengkap</th>
                   <th>Alamat Rumah</th>
                   <th>No Telpon</th>
-                  <th>Anak Binaan</th>
+                  
               </tr>
               </thead>
             <tbody>
                 <?php
                 include "../connection.php";
-                $query = "SELECT * FROM kakak_asuh, anak_binaan where anak_binaan.id_kakak = kakak_asuh.id_kakak";
+                $query = "SELECT * FROM kakak_asuh";
                 $result = mysql_query($query);
+                $i=0;
                 if($result)
                 {
                     while($row = mysql_fetch_array($result))
                     {
+                      $i++;
                       //echo $row['ID_KAKAK'] . "<br>";
                       echo "<tr>\n\t";
+                      echo "<td>" . $i . "</td>\n\t";
                       echo "<td>" . $row['NAMA_KAKAK'] . "</td>\n\t";
                       echo "<td>" . $row['ALAMAT_KAKAK'] . "</td>\n\t";
                       echo "<td>" . $row['NO_TELPON_KAKAK'] . "</td>\n\t";
-                      echo "<td>" . $row['NAMA_ANAK'] . "</td>\n\t";
+  
                     }
                 } else {
                     echo 'Invalid query: ' . mysql_error() . "\n";
