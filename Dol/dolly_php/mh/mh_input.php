@@ -150,12 +150,7 @@
         <!-- Main content -->
         <section class="content">
           <!-- Info boxes -->
-          <div class="row">
-
-            
-
-          </div><!-- /.row -->
-
+          
           <!-- Main row -->
           <div class="row">
           

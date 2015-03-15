@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Kakak Asuh DollyCare | Dashboard</title>
+    <title>Admin DollyCare | Dashboard</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -23,6 +23,22 @@
     <link href="../../dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
     <link href="../../dist/css/dataTables.fixedColumns.css" rel="stylesheet" type="text/css" />
     <link href="../../dist/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <style>
+        /* Ensure that the demo table scrolls */
+      th, td { white-space: nowrap; }
+      
+      #table1 {
+        overflow: auto;
+        height: 100px;
+        display: inline-block;
+      }
+
+      #table2 {
+        overflow: auto;
+        height: 300px;
+        display: inline-block;
+      }
+    </style>
   </head>
 
   <body class="skin-blue">
@@ -30,7 +46,7 @@
       
       <header class="main-header">
         <!-- Logo -->
-        <a href="mh_panel.php" class="logo"><b>Dolly</b>Care</a>
+        <a href="adm_panel.php" class="logo"><b>Dolly</b>Care</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
 
@@ -65,171 +81,150 @@
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <center><span style="color:#fff;"><a href="mh_input.php"><i class="glyphicon glyphicon-plus">&nbsp;&nbsp;&nbsp;</i></a>
-              <a href="mh_edit_pilih.php"><i class="glyphicon glyphicon-pencil">&nbsp;&nbsp;&nbsp;</i></a>
-              <a href="mh_hapus_pilih.php"><i class="glyphicon glyphicon-trash"></i></a></span></center>
-              <br/>
-            <li class="header">MENU UTAMA</li>    
-
-            <!-- Data Elemen -->
+            
+            <li class="header">MENU UTAMA</li>
+            
+            <!-- Profil Diri -->
             <li class="treeview">
-              <a href="mh_edit_kakak.php">
-                <img src="../../dist/img/icon2.png"/ width="10%" height="10%">
-                <span>Profil</span>
+              <a href="adm_profil_diri.php">
+                <img src="../../dist/img/profile-icon.png"/ width="10%" height="10%">
+                <span>Profil Diri</span>
               </a>
             </li>
 
+            <!-- Manajemen Kakak Asuh -->
             <li class="treeview">
               <a href="#">
-                <img src="../../dist/img/population.png"/ width="10%" height="10%">
-                <span>Data Elemen</span>
+                <img src="../../dist/img/kasuh-icon.png"/ width="10%" height="10%">
+                <span>Manajemen Kakak Asuh</span>
                 <i class="glyphicon glyphicon-chevron-down pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li class="treeview">
-                  <a href="mh_elemen_kakak.php">
-                     <img src="../../dist/img/kakak-icon.png"/ width="10%" height="10%">
-                    <span>Kakak Asuh</span>    
+                  <a href="adm_lihat_kakak.php">
+                     <i class="glyphicon glyphicon-eye-open"></i>
+                    <span>Lihat Kakak Asuh</span>    
                   </a>
                 </li>
                 <li class="treeview">
-                  <a href="mh_elemen_siswa.php">
-                     <img src="../../dist/img/siswa-icon.ico"/ width="10%" height="10%">
-                     <span>Siswa Binaan</span>
+                  <a href="adm_tambah_kakak.php">
+                     <i class="glyphicon glyphicon-plus"></i>
+                     <span>Tambah Kakak Asuh</span>
+                  </a>
+                </li>
+                <li class="treeview">
+                  <a href="adm_hapus_kakak.php">
+                     <i class="glyphicon glyphicon-trash"></i>
+                     <span>Hapus Kakak Asuh</span>
                   </a>
                 </li>
               </ul>
             </li>
 
-            <!-- Pelatihan -->
+            <!-- Manajemen Pelatihan -->
             <li class="treeview">
-              <a href="mh_pelatihan.php">
+              <a href="#">
                 <img src="../../dist/img/training-icon.png"/ width="10%" height="10%">
-                <span>Pelatihan</span>
-              </a>
-            </li>
-
-            <!-- Report -->
-            <li class="treeview">
-              <a href="#">
-                <img src="../../dist/img/doc-icon.png"/ width="10%" height="10%">
-                <span>Report</span>
+                <span>Manajemen Pelatihan</span>
                 <i class="glyphicon glyphicon-chevron-down pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li class="treeview">
-                  <a href="mh_harian.php">
-                     <img src="../../dist/img/red.png"/ width="10%" height="10%">
-                    <span>Report Harian</span>    
+                  <a href="adm_lihat_pelatihan.php">
+                     <i class="glyphicon glyphicon-eye-open"></i>
+                    <span>Lihat Pelatihan</span>    
                   </a>
                 </li>
                 <li class="treeview">
-                  <a href="mh_mingguan.php">
-                     <img src="../../dist/img/yellow.png"/ width="10%" height="10%">
-                     <span>Report Mingguan</span>
+                  <a href="adm_tambah_pelatihan.php">
+                     <i class="glyphicon glyphicon-plus"></i>
+                     <span>Tambah Pelatihan</span>
                   </a>
                 </li>
                 <li class="treeview">
-                  <a href="mh_bulanan.php">
-                     <img src="../../dist/img/green.png"/ width="10%" height="10%">
-                     <span>Report Bulanan</span>
+                  <a href="adm_hapus_pelatihan.php">
+                     <i class="glyphicon glyphicon-trash"></i>
+                     <span>Hapus Pelatihan</span>
                   </a>
                 </li>
               </ul>
             </li>
-
             
           </ul>
         </section>
         <!-- /.sidebar -->
       </aside>
 
-       <div class="content-wrapper">
+      <!-- Right side column. Contains the navbar and content of the page -->
+      <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>
-            <center>Edit Profil Kakak Asuh</center><hr>
-          </h1>
+          <table id="table1">
+            <tr>
+              <td>
+                <h1>
+                  Data Kakak Asuh
+                </h1>
+              </td>
+              <td>
+                <div class="col-md-4 pull-right">
+                  <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                      <input type="text" name="q" class="form-control" placeholder="Cari..."/>
+                      <span class="input-group-btn">
+                        <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="glyphicon glyphicon-search"></i></button>
+                      </span>
+                    </div>
+                  </form>
+                </div>
+              </td>
+            </tr>
+          </table>
         </section>
-        
-        
+
+       
         <!-- Main content -->
         <section class="content">
-          <!-- Info boxes -->
-          <div class="row">
-
-            
-
-          </div><!-- /.row -->
-
-           <?php
-            $ID_KAKAK = $_GET['id_kakak'];
-            include "../connection.php";
-            $query = "SELECT * FROM kakak_asuh WHERE ID_KAKAK = " . $ID_KAKAK;
-            $result = mysql_query($query);
-            if($result)
-            {
-                while($row = mysql_fetch_array($result))
+          <div class="row"><center>
+            <table id="table2" class="table table-hover table-bordered stripe row-border order-column" cellspacing="0" width="100%">
+              <thead>
+              <tr>
+                  <th>No.</th>
+                  <th>Nama Lengkap</th>
+                  <th>Alamat Rumah</th>
+                  <th>No Telpon</th>
+                  
+              </tr>
+              </thead>
+            <tbody>
+                <?php
+                include "../connection.php";
+                $query = "SELECT * FROM kakak_asuh";
+                $result = mysql_query($query);
+                $i=0;
+                if($result)
                 {
-                  $nama_kakak = $row['NAMA_KAKAK'];
-                  $alamat_kakak = $row['ALAMAT_KAKAK'];
-                  $no_telp_kakak = $row['NO_TELPON_KAKAK'];
-                  $username = $row['USERNAME'];
-                  $password = $row['PASSWORD'];
+                    while($row = mysql_fetch_array($result))
+                    {
+                      $i++;
+                      //echo $row['ID_KAKAK'] . "<br>";
+                      echo "<tr>\n\t";
+                      echo "<td>" . $i . "</td>\n\t";
+                      echo "<td>" . $row['NAMA_KAKAK'] . "</td>\n\t";
+                      echo "<td>" . $row['ALAMAT_KAKAK'] . "</td>\n\t";
+                      echo "<td>" . $row['NO_TELPON_KAKAK'] . "</td>\n\t";
+  
+                    }
+                } else {
+                    echo 'Invalid query: ' . mysql_error() . "\n";
+                    echo 'Whole query: ' . $query; 
                 }
-            } else {
-                echo 'Invalid query: ' . mysql_error() . "\n";
-                echo 'Whole query: ' . $query; 
-            }
-          ?>
-
-          <!-- Main row -->
-          <div class="row">
-          
-            <form class="form-horizontal" action="cek_edit.php" method="post">
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">Nama Lengkap</label>
-                <div class="col-sm-6">
-                  <input type="hidden" name="nama_kakak" value=<?php echo $nama_kakak; ?>>
-                  <input type="text" class="form-control" name="nama_kakak" placeholder="Nama lengkap kakak asuh" value=<?php echo "\"" . $nama_kakak . "\""; ?>>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">Alamat Rumah</label>
-                <div class="col-sm-6">
-                  <input type="text" class="form-control" name="alamat_kakak" placeholder="Alamat kakak asuh" value=<?php echo "\"" . $alamat_kakak . "\""; ?>>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">No Telpon Kakak Asuh</label>
-                <div class="col-sm-6">
-                  <input type="text" class="form-control" name="no_telp_kakak" placeholder="No telp kakak asuh" value=<?php echo "\"" . $no_telp_kakak . "\""; ?>>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">Username</label>
-                <div class="col-sm-6">
-                  <input type="text" class="form-control" name="username" placeholder="Username" value=<?php echo "\"" . $username . "\""; ?>>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">Password</label>
-                <div class="col-sm-6">
-                  <input type="text" class="form-control" name="password" placeholder="Password" value=<?php echo "\"" . $password . "\""; ?>>
-                </div>
-              </div>
-             
-              </div>
-              <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-10">
-                  <button type="submit" class="btn btn-success">UPDATE</button>
-                  <button type="reset" class="btn btn-danger">Batal</button>
-                </div>
-              </div>
-            </form>
-          
+              ?>
+            </tbody>
+            </table></center>
           </div>
-
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
 
       <footer class="main-footer">
         <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Dolly Softwarehouse Ltd.</a></strong> All rights reserved.
@@ -237,7 +232,6 @@
 
     </div><!-- ./wrapper -->
     
-
     <script src="../../dist/js/jQuery.js"></script>
     <script src="../../dist/js/jquery.dataTables.js"></script>
     <script src="../../dist/js/dataTables.fixedColumns.js"></script>
