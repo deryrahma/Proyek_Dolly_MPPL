@@ -6,11 +6,11 @@
 	$nama_anak = $_POST['nama_anak'];
 	$jk_anak = $_POST['jk_anak'];
 	$tempat_lahir = $_POST['tempat_lahir'];
-	$tanggal_lahir = date("Y-m-d", strtotime($_POST['tanggal_lahir']));
+	$tanggal_lahir = $_POST['tanggal_lahir'];
 	$agama = $_POST['agama'];
 	$anak_ke = $_POST['anak_ke'];
 	$alamat_siswa = $_POST['alamat_siswa'];
-	$tanggal_masuk = date("Y-m-d", strtotime($_POST['tanggal_masuk']));
+	$tanggal_masuk = $_POST['tanggal_masuk'];
 	$kelas = $_POST['kelas'];
 	$nama_sekolah = $_POST['nama_sekolah'];
 	$sekolah_asal = $_POST['sekolah_asal'];
