@@ -24,16 +24,19 @@
     <link href="../../dist/css/dataTables.fixedColumns.css" rel="stylesheet" type="text/css" />
     <link href="../../dist/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
     <style>
-      .skrol {
-        overflow: scroll;
-      }
-
         /* Ensure that the demo table scrolls */
       th, td { white-space: nowrap; }
-      div.dataTables_wrapper {
-          width: 800px;
-          margin: 0 auto;
-              
+      
+      #table1 {
+        overflow: auto;
+        height: 100px;
+        display: inline-block;
+      }
+
+      #table2 {
+        overflow: auto;
+        height: 300px;
+        display: inline-block;
       }
     </style>
   </head>
@@ -43,7 +46,7 @@
       
       <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo"><b>Dolly</b>Care</a>
+        <a href="mh_panel.php" class="logo"><b>Dolly</b>Care</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
 
@@ -82,8 +85,7 @@
               <a href="mh_edit_pilih.php"><i class="glyphicon glyphicon-pencil">&nbsp;&nbsp;&nbsp;</i></a>
               <a href="mh_hapus_pilih.php"><i class="glyphicon glyphicon-trash"></i></a></span></center>
               <br/>
-            <li class="header">MENU UTAMA</li>    
-
+            <li class="header">MENU UTAMA</li>
             <!-- Data Elemen -->
             <li class="treeview">
               <a href="#">
@@ -123,7 +125,7 @@
                 <i class="glyphicon glyphicon-chevron-down pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li class="treeview active">
+                <li class="treeview">
                   <a href="mh_harian.php">
                      <img src="../../dist/img/red.png"/ width="10%" height="10%">
                     <span>Report Harian</span>    
@@ -142,9 +144,7 @@
                   </a>
                 </li>
               </ul>
-            </li>
-
-            
+            </li>          
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -154,84 +154,78 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <table>
+          <table id="table1">
             <tr>
               <td>
                 <h1>
-                  Laporan Harian
+                  Data Siswa Binaan
                 </h1>
               </td>
-              
+              <td>
+                <div class="col-md-4 pull-right">
+                  <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                      <input type="text" name="q" class="form-control" placeholder="Cari..."/>
+                      <span class="input-group-btn">
+                        <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="glyphicon glyphicon-search"></i></button>
+                      </span>
+                    </div>
+                  </form>
+                </div>
+              </td>
             </tr>
           </table>
         </section>
         
         <!-- Main content -->
         <section class="content">
-          <!-- Info boxes -->
           <div class="row">
 
-          </div><!-- /.row -->
-
-          <!-- Main row -->
-          
-
-
-            <form class="form-inline" method="GET" action="cek_tambah_jadwal.php">
-            <table>
-              <tr>
-                <td>
-                  <div class="form-group">
-                    <h4>
-                      Tanggal
-                    </h4>
-                  </div>
-                </td>
-                <td align="right">
-                  <div class="form-group">
-                    <input type="date" name="jadwal_pelatihan">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="form-group">
-                    <h4>Pelatihan </h4>
-                  </div>
-                </td>
-                <td>
-                  <select class="form-control" id="sel1" name="id_pelatihan">
-                    <?php
-                    include "../connection.php";
-                    $query = "SELECT * from pelatihan";
-                    $result = mysql_query($query);
-                    if($result)
-                    {
-                        while($row = mysql_fetch_array($result))
-                        {
-                          echo "<option value=" . $row['ID_PELATIHAN'] . ">" . $row['NAMA_PELATIHAN'] . "</option>";
-                        }
-                    }
-                   ?>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td></td>
-                <td align="right">
-                  <div>
-                    <button type="submit" class="btn btn-info">Pilih</button>  
-                  </div>
-                </td>
-              </tr>
-            </table>              
-            </form>
           </div>
-          
-          
-              
-          
-
+          <div>
+            <table id="table2" class="table table-hover table-bordered stripe row-border order-column" cellspacing="0" width="100%">
+              <thead>
+              <tr>
+                  <th>Nama Lengkap</th>
+                  <th>Jenis Kelamin</th>
+                  <th>Tempat Lahir</th>
+                  <th>Tanggal Lahir</th>
+                  <th>Agama</th>
+                  <th>Penilaian</th>
+                  <th>Status</th>
+              </tr>
+              </thead>
+            <tbody>
+              <?php
+                include "../connection.php";
+                $query = "SELECT * FROM anak_binaan";
+                $result = mysql_query($query);
+                if($result)
+                {
+                    while($row = mysql_fetch_array($result))
+                    {
+                      //echo $row['ID_KAKAK'] . "<br>";
+                      echo "<tr>\n\t";
+                      echo "<td>" . $row['NAMA_ANAK'] . "</td>\n\t";
+                      if($row['JK_ANAK'] == 'L'){
+                        echo "<td>Laki-laki</td>\n\t";
+                      } else {
+                        echo "<td>Perempuan</td>\n\t";
+                      }
+                      echo "<td>" . $row['TEMPAT_LAHIR'] . "</td>\n\t";
+                      echo "<td>" . $row['TANGGAL_LAHIR'] . "</td>\n\t";
+                      echo "<td>" . $row['AGAMA'] . "</td>\n\t";
+                      echo "<td><center><a href=\"mh_penilaian_bulanan.php?id_anak=" . $row['ID_ANAK'] . "&&id_pelatihan=" . $_GET['id_pelatihan'] . "&&jadwal_pelatihan=" . $_GET['jadwal_pelatihan'] . "\"><i class=\"glyphicon glyphicon-list-alt\"></i></a></center></td></tr>\n\t";
+                    }
+                }
+                else {
+                    echo 'Invalid query: ' . mysql_error() . "\n";
+                    echo 'Whole query: ' . $query; 
+                }
+              ?>
+            </tbody>
+            </table>
+          </div>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
 
@@ -243,7 +237,7 @@
     <script>
     $(document).ready(function() {
     var table = $('#example').DataTable( {
-        scrollY:        "300px",
+        scrollY:        "100px",
         scrollX:        true,
         scrollCollapse: true,
         paging:         false

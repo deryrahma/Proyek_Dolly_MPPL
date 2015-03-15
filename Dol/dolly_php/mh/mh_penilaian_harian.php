@@ -179,9 +179,16 @@
         
         <!-- Main content -->
         <section class="content">
+
           <div class="row">
+
+          </div>
+
+          <div>
+          <b> Nama anak asuh : </b><h4>
           <?php
             include "../connection.php";
+            //echo $_GET['id_pelatihan'] . "\n";
             $query = "SELECT * FROM anak_binaan WHERE ID_ANAK =" . $_GET['id_anak'];
             $result = mysql_query($query);
                 if($result)
@@ -193,21 +200,54 @@
                 }
           ?>
 
-            <table id="table2" class="table table-hover table-bordered stripe row-border order-column" cellspacing="0" width="100%">
-              <thead>
-              <tr>
-                  <th>Nama Lengkap</th>
-                  <th>Jenis Kelamin</th>
-                  <th>Tempat Lahir</th>
-                  <th>Tanggal Lahir</th>
-                  <th>Agama</th>
-                  <th>Penilaian</th>
-                  <th>Indikator</th>
-              </tr>
-              </thead>
-            <tbody>
-            </tbody>
-            </table>
+          </h4>
+            <br>
+
+            <form method="POST" action="cek_tambah_rapor.php">
+              <table id="table2" class="table table-hover table-bordered stripe row-border order-column" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Nilai</th>
+                    <th>Indikator</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <?php
+                    include "../connection.php";
+
+                    //echo $_GET['id_pelatihan'] . "\n";
+                    $query = "SELECT * FROM pelatihan, parameter WHERE pelatihan.ID_PELATIHAN =" . $_GET['id_pelatihan'] . " AND pelatihan.ID_PELATIHAN = parameter.ID_PELATIHAN";
+                    $result = mysql_query($query);
+                    if($result)
+                    {
+                      $count = 0;
+                      while($row = mysql_fetch_array($result))
+                      {
+                        echo "<tr>";
+                        echo "<td>" . $row['PARAMETER'] . "</td>
+                        <td>
+                        <input type=hidden name=nilai[" . $count . "][0] value=" . $_GET['id_anak'] . ">
+                        <input type=hidden name=nilai[" . $count . "][1] value=" . $_GET['jadwal_pelatihan'] . ">
+                        <input type=hidden name=nilai[" . $count . "][2] value=" . $row['ID_PARAMETER'] . ">
+                        <input type=text name=nilai[" . $count . "][3]>
+                        <input type=hidden name=nilai[" . $count . "][4] value=" . $_GET['id_pelatihan'] . ">
+                        </td>
+                        <td></td>";
+                        echo "</tr>";
+                        $count++;
+                      }
+                    }
+                  ?>
+                </tbody>
+              </table>
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-10">
+                  <button type="submit" class="btn btn-success">Simpan</button>
+                  <button type="reset" class="btn btn-danger">Batal</button>
+                </div>
+              </div>
+            </form>
           </div>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->

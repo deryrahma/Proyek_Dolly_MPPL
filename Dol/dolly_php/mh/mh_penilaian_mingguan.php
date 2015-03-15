@@ -30,18 +30,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-    <style>
-      .skrol {
-        overflow: scroll;
-      }
-
-        /* Ensure that the demo table scrolls */
-      th, td { white-space: nowrap; }
-      div.dataTables_wrapper {
-          width: 800px;
-          margin: 0 auto;
-      }
-    </style>
+    
   </head>
   <body class="skin-blue">
     <div class="wrapper">
@@ -87,35 +76,69 @@
               <a href="mh_edit_pilih.php"><i class="glyphicon glyphicon-pencil">&nbsp;&nbsp;&nbsp;</i></a>
               <a href="mh_hapus_pilih.php"><i class="glyphicon glyphicon-trash"></i></a></span></center>
               <br/>
-            <li class="header">MENU UTAMA</li>
+            <li class="header">MENU UTAMA</li>    
+
+            <!-- Data Elemen -->
             <li class="treeview">
-              <a href="mh_panel.php">
+              <a href="#">
                 <img src="../../dist/img/population.png"/ width="10%" height="10%">
-                <span>Data Siswa</span>
+                <span>Data Elemen</span>
+                <i class="glyphicon glyphicon-chevron-down pull-right"></i>
               </a>
+              <ul class="treeview-menu">
+                <li class="treeview">
+                  <a href="mh_elemen_kakak.php">
+                     <img src="../../dist/img/kakak-icon.png"/ width="10%" height="10%">
+                    <span>Kakak Asuh</span>    
+                  </a>
+                </li>
+                <li class="treeview">
+                  <a href="mh_elemen_siswa.php">
+                     <img src="../../dist/img/siswa-icon.ico"/ width="10%" height="10%">
+                     <span>Siswa Binaan</span>
+                  </a>
+                </li>
+              </ul>
             </li>
+
+            <!-- Pelatihan -->
             <li class="treeview">
-              <a href="mh_harian.php">
-                 <img src="../../dist/img/red.png"/ width="10%" height="10%">
-                <span>Report Harian</span>
-                
-              </a>
-             
-            </li>
-            <li class="active treeview">
-              <a href="mh_mingguan.php">
-                 <img src="../../dist/img/yellow.png"/ width="10%" height="10%">
-                 <span>Report Mingguan</span>
+              <a href="mh_pelatihan.php">
+                <img src="../../dist/img/training-icon.png"/ width="10%" height="10%">
+                <span>Pelatihan</span>
               </a>
             </li>
-            <li>
-              <a href="mh_bulanan.php">
-                 <img src="../../dist/img/green.png"/ width="10%" height="10%">
-                 <span>Report Bulanan</span>
+
+            <!-- Report -->
+            <li class="treeview">
+              <a href="#">
+                <img src="../../dist/img/doc-icon.png"/ width="10%" height="10%">
+                <span>Report</span>
+                <i class="glyphicon glyphicon-chevron-down pull-right"></i>
               </a>
+              <ul class="treeview-menu">
+                <li class="treeview active">
+                  <a href="mh_harian.php">
+                     <img src="../../dist/img/red.png"/ width="10%" height="10%">
+                    <span>Report Harian</span>    
+                  </a>
+                </li>
+                <li class="treeview">
+                  <a href="mh_mingguan.php">
+                     <img src="../../dist/img/yellow.png"/ width="10%" height="10%">
+                     <span>Report Mingguan</span>
+                  </a>
+                </li>
+                <li class="treeview">
+                  <a href="mh_bulanan.php">
+                     <img src="../../dist/img/green.png"/ width="10%" height="10%">
+                     <span>Report Bulanan</span>
+                  </a>
+                </li>
+              </ul>
             </li>
+
             
-          
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -125,9 +148,15 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>
-            <center>Tambah Laporan Mingguan</center><hr>
-          </h1>
+          <center><table>
+            <tr>
+              <td>
+                <h1>
+                  Penilaian Mingguan
+                </h1>
+              </td>
+            </tr>
+          </table></center>
         </section>
         
         
@@ -136,48 +165,68 @@
 
           <!-- Main row -->
           <div class="row">
+            <div class="box box-success">
+                <div class="box-header">
+                  <h3 class="box-title">Diagram Perkembangan Harian selama Seminggu</h3>
+                </div>
+                <div class="box-body chart-responsive">
+                  <div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
+                </div>
+            </div>
+
           
-            <form class="form-horizontal">
+            <form class="form-horizontal" method="POST" action="cek_tambah_mingguan.php">
               <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">Nama Lengkap</label>
+                <label for="inputEmail3" class="col-sm-3 control-label"><b> Nama Lengkap </b></label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control" name="nama_anak" placeholder="Bima Nisrina Madjid">
+                <h4><?php
+                  include "../connection.php";
+                  $query = "SELECT * FROM anak_binaan WHERE ID_ANAK =" . $_GET['id_anak'];
+                  $result = mysql_query($query);
+                      if($result)
+                      {
+                          while($row = mysql_fetch_array($result))
+                          {
+                            echo $row['NAMA_ANAK'];
+                          }
+                      }
+                ?></h4>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Perilaku yang Diamati</label>
                 <div class="col-sm-6">
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" rows="3" name="perilaku_yang_diamati"></textarea>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Perubahan Perilaku yang Terjadi</label>
                 <div class="col-sm-6">
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" rows="3" name="perubahan_perilaku_yang_terjadi"></textarea>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Sumber Informasi</label>
                 <div class="col-sm-6">
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" rows="3" name="sumber_informasi"></textarea>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Cara Pendekatan</label>
                 <div class="col-sm-6">
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" rows="3" name="cara_pendekatan"></textarea>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Keterangan</label>
                 <div class="col-sm-6">
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" rows="3" name="keterangan"></textarea>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Cerita Menarik</label>
                 <div class="col-sm-6">
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" rows="3" name="cerita_menarik"></textarea>
                 </div>
               </div>
               <div class="form-group">
@@ -189,7 +238,7 @@
                            
               <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-10">
-                  <button type="submit" class="btn btn-success">Tambah</button>
+                  <button type="submit" class="btn btn-success">Simpan</button>
                   <button type="reset" class="btn btn-danger">Batal</button>
                 </div>
               </div>
@@ -206,52 +255,39 @@
       </footer>
 
     </div><!-- ./wrapper -->
-    <script>
-    $(document).ready(function() {
-    var table = $('#example').DataTable( {
-        scrollY:        "300px",
-        scrollX:        true,
-        scrollCollapse: true,
-        paging:         false
-    } );
- 
-    new $.fn.dataTable.FixedColumns( table, {
-        leftColumns: 6
-    } );
-} );
+    
+    <!-- jQuery 2.1.3 -->
+    <script src="../../plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script src="../../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- Morris.js charts -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="../../plugins/morris/morris.min.js" type="text/javascript"></script>
+    <!-- FastClick -->
+    <script src='../../plugins/fastclick/fastclick.min.js'></script>
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/app.min.js" type="text/javascript"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../../dist/js/demo.js" type="text/javascript"></script>
+
+    <!-- page script -->
+    <script type="text/javascript">
+      $(function () {
+        "use strict";
+        //DONUT CHART
+        var donut = new Morris.Donut({
+          element: 'sales-chart',
+          resize: true,
+          colors: ["#3c8dbc", "#f56954", "#00a65a"],
+          data: [
+            {label: "Download Sales", value: 12},
+            {label: "In-Store Sales", value: 30},
+            {label: "Mail-Order Sales", value: 20}
+          ],
+          hideHover: 'auto'
+        });
+      });
     </script>
 
-    <script src="../../dist/js/jQuery.js"></script>
-    <script src="../../dist/js/jquery.dataTables.js"></script>
-    <script src="../../dist/js/dataTables.fixedColumns.js"></script>
-    <!-- jQuery 2.1.3 -->
-    <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
-    <!-- Bootstrap 3.3.2 JS -->
-    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- FastClick -->
-    <script src='plugins/fastclick/fastclick.min.js'></script>
-    <!-- AdminLTE App -->
-    <script src="dist/js/app.min.js" type="text/javascript"></script>
-    <!-- Sparkline -->
-    <script src="plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
-    <!-- jvectormap -->
-    <script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
-    <script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
-    <!-- daterangepicker -->
-    <script src="plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
-    <!-- datepicker -->
-    <script src="plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
-    <!-- iCheck -->
-    <script src="plugins/iCheck/icheck.min.js" type="text/javascript"></script>
-    <!-- SlimScroll 1.3.0 -->
-    <script src="plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <!-- ChartJS 1.0.1 -->
-    <script src="plugins/chartjs/Chart.min.js" type="text/javascript"></script>
-
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="dist/js/pages/dashboard2.js" type="text/javascript"></script>
-
-    <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js" type="text/javascript"></script>
   </body>
 </html>

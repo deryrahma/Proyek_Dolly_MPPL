@@ -24,16 +24,19 @@
     <link href="../../dist/css/dataTables.fixedColumns.css" rel="stylesheet" type="text/css" />
     <link href="../../dist/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
     <style>
-      .skrol {
-        overflow: scroll;
-      }
-
         /* Ensure that the demo table scrolls */
       th, td { white-space: nowrap; }
-      div.dataTables_wrapper {
-          width: 800px;
-          margin: 0 auto;
-              
+      
+      #table1 {
+        overflow: auto;
+        height: 100px;
+        display: inline-block;
+      }
+
+      #table2 {
+        overflow: auto;
+        height: 300px;
+        display: inline-block;
       }
     </style>
   </head>
@@ -43,7 +46,7 @@
       
       <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo"><b>Dolly</b>Care</a>
+        <a href="mh_panel.php" class="logo"><b>Dolly</b>Care</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
 
@@ -82,8 +85,7 @@
               <a href="mh_edit_pilih.php"><i class="glyphicon glyphicon-pencil">&nbsp;&nbsp;&nbsp;</i></a>
               <a href="mh_hapus_pilih.php"><i class="glyphicon glyphicon-trash"></i></a></span></center>
               <br/>
-            <li class="header">MENU UTAMA</li>    
-
+            <li class="header">MENU UTAMA</li>
             <!-- Data Elemen -->
             <li class="treeview">
               <a href="#">
@@ -123,7 +125,7 @@
                 <i class="glyphicon glyphicon-chevron-down pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li class="treeview active">
+                <li class="treeview">
                   <a href="mh_harian.php">
                      <img src="../../dist/img/red.png"/ width="10%" height="10%">
                     <span>Report Harian</span>    
@@ -142,9 +144,7 @@
                   </a>
                 </li>
               </ul>
-            </li>
-
-            
+            </li>          
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -154,84 +154,117 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <table>
+          <table id="table1">
             <tr>
               <td>
                 <h1>
-                  Laporan Harian
+                  Penilaian Harian
                 </h1>
               </td>
-              
+              <td>
+                <div class="col-md-4 pull-right">
+                  <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                      <input type="text" name="q" class="form-control" placeholder="Cari..."/>
+                      <span class="input-group-btn">
+                        <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="glyphicon glyphicon-search"></i></button>
+                      </span>
+                    </div>
+                  </form>
+                </div>
+              </td>
             </tr>
           </table>
         </section>
         
         <!-- Main content -->
         <section class="content">
-          <!-- Info boxes -->
+
           <div class="row">
 
-          </div><!-- /.row -->
+          </div>
 
-          <!-- Main row -->
-          
+          <div>
+          <b> Nama anak asuh : </b><h4>
+          <?php
+            include "../connection.php";
+            //echo $_GET['id_pelatihan'] . "\n";
+            $query = "SELECT * FROM anak_binaan WHERE ID_ANAK =" . $_GET['id_anak'];
+            $result = mysql_query($query);
+            if($result)
+            {
+                while($row = mysql_fetch_array($result))
+                {
+                  echo $row['NAMA_ANAK'];
+                }
+            }
+            echo "&nbsp;</h4><br /><br /><b>Pelatihan: </b><h4> ";
 
+            $query = "SELECT * FROM pelatihan WHERE ID_PELATIHAN=" . $_GET['id_pelatihan'];
+            $result = mysql_query($query);
+            if($result)
+            {
+                while($row = mysql_fetch_array($result))
+                {
+                  echo $row['NAMA_PELATIHAN'];
+                }
+            }
+            echo "</h4>";
+          ?>
+          </h4>
+            <br>
 
-            <form class="form-inline" method="GET" action="cek_tambah_jadwal.php">
-            <table>
-              <tr>
-                <td>
-                  <div class="form-group">
-                    <h4>
-                      Tanggal
-                    </h4>
-                  </div>
-                </td>
-                <td align="right">
-                  <div class="form-group">
-                    <input type="date" name="jadwal_pelatihan">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="form-group">
-                    <h4>Pelatihan </h4>
-                  </div>
-                </td>
-                <td>
-                  <select class="form-control" id="sel1" name="id_pelatihan">
-                    <?php
-                    include "../connection.php";
-                    $query = "SELECT * from pelatihan";
+            <form method="POST" action="cek_tambah_rapor.php">
+              <table id="table2" class="table table-hover table-bordered stripe row-border order-column" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Nilai</th>
+                    <th>Indikator</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <?php
+                    //include "../connection.php";
+
+                    //echo $_GET['id_pelatihan'] . "\n";
+                    $query = "SELECT * FROM jadwal_pelatihan WHERE jadwal_pelatihan.JADWAL_PELATIHAN='" . $_GET['jadwal_pelatihan'] . "' AND jadwal_pelatihan.ID_PELATIHAN=" . $_GET['id_pelatihan'];
+                    //echo "<br>id_jadwal" . $query . "<br>";
                     $result = mysql_query($query);
                     if($result)
                     {
-                        while($row = mysql_fetch_array($result))
-                        {
-                          echo "<option value=" . $row['ID_PELATIHAN'] . ">" . $row['NAMA_PELATIHAN'] . "</option>";
-                        }
+                      while($row = mysql_fetch_array($result))
+                      {
+                        $id_jadwal = $row['ID_JADWAL'];
+                      }
                     }
-                   ?>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td></td>
-                <td align="right">
-                  <div>
-                    <button type="submit" class="btn btn-info">Pilih</button>  
-                  </div>
-                </td>
-              </tr>
-            </table>              
+
+                    $query = "SELECT * FROM pelatihan, parameter, jadwal_pelatihan, rapor_harian WHERE pelatihan.ID_PELATIHAN =" . $_GET['id_pelatihan'] . " AND pelatihan.ID_PELATIHAN = parameter.ID_PELATIHAN AND rapor_harian.ID_PARAMETER = parameter.ID_PARAMETER AND jadwal_pelatihan.ID_PELATIHAN = pelatihan.ID_PELATIHAN AND rapor_harian.ID_JADWAL = jadwal_pelatihan.ID_JADWAL AND jadwal_pelatihan.ID_JADWAL = " . $id_jadwal . " AND rapor_harian.ID_ANAK = " . $_GET['id_anak'];
+                    $result = mysql_query($query);
+                    if($result)
+                    {
+                      $count = 0;
+                      while($row = mysql_fetch_array($result))
+                      {
+                        echo "<tr>";
+                        echo "<td>" . $row['PARAMETER'] . "</td>
+                        <td>" . $row['NILAI'] . "</td>
+                        <td></td>";
+                        echo "</tr>";
+                        $count++;
+                      }
+                    }
+                  ?>
+                </tbody>
+              </table>
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-10">
+                  <button type="submit" class="btn btn-success">Simpan</button>
+                  <button type="reset" class="btn btn-danger">Batal</button>
+                </div>
+              </div>
             </form>
           </div>
-          
-          
-              
-          
-
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
 
@@ -243,7 +276,7 @@
     <script>
     $(document).ready(function() {
     var table = $('#example').DataTable( {
-        scrollY:        "300px",
+        scrollY:        "100px",
         scrollX:        true,
         scrollCollapse: true,
         paging:         false

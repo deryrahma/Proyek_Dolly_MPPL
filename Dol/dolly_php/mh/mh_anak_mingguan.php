@@ -148,6 +148,90 @@
           </ul>
         </section>
         <!-- /.sidebar -->
+      </aside><aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+          <div class="user-panel">
+            <div class="pull-left image">
+              <img src="../../dist/img/user.png" alt="User Image"/>
+            </div>
+            <div class="pull-left info">
+              <h4>Admin</h4>
+            </div>
+          </div>
+          <!-- /.search form -->
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <ul class="sidebar-menu">
+            <center><span style="color:#fff;"><a href="mh_input.php"><i class="glyphicon glyphicon-plus">&nbsp;&nbsp;&nbsp;</i></a>
+              <a href="mh_edit_pilih.php"><i class="glyphicon glyphicon-pencil">&nbsp;&nbsp;&nbsp;</i></a>
+              <a href="mh_hapus_pilih.php"><i class="glyphicon glyphicon-trash"></i></a></span></center>
+              <br/>
+            <li class="header">MENU UTAMA</li>    
+
+            <!-- Data Elemen -->
+            <li class="treeview">
+              <a href="#">
+                <img src="../../dist/img/population.png"/ width="10%" height="10%">
+                <span>Data Elemen</span>
+                <i class="glyphicon glyphicon-chevron-down pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li class="treeview">
+                  <a href="mh_elemen_kakak.php">
+                     <img src="../../dist/img/kakak-icon.png"/ width="10%" height="10%">
+                    <span>Kakak Asuh</span>    
+                  </a>
+                </li>
+                <li class="treeview">
+                  <a href="mh_elemen_siswa.php">
+                     <img src="../../dist/img/siswa-icon.ico"/ width="10%" height="10%">
+                     <span>Siswa Binaan</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Pelatihan -->
+            <li class="treeview">
+              <a href="mh_pelatihan.php">
+                <img src="../../dist/img/training-icon.png"/ width="10%" height="10%">
+                <span>Pelatihan</span>
+              </a>
+            </li>
+
+            <!-- Report -->
+            <li class="treeview">
+              <a href="#">
+                <img src="../../dist/img/doc-icon.png"/ width="10%" height="10%">
+                <span>Report</span>
+                <i class="glyphicon glyphicon-chevron-down pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li class="treeview active">
+                  <a href="mh_harian.php">
+                     <img src="../../dist/img/red.png"/ width="10%" height="10%">
+                    <span>Report Harian</span>    
+                  </a>
+                </li>
+                <li class="treeview">
+                  <a href="mh_mingguan.php">
+                     <img src="../../dist/img/yellow.png"/ width="10%" height="10%">
+                     <span>Report Mingguan</span>
+                  </a>
+                </li>
+                <li class="treeview">
+                  <a href="mh_bulanan.php">
+                     <img src="../../dist/img/green.png"/ width="10%" height="10%">
+                     <span>Report Bulanan</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            
+          </ul>
+        </section>
+        <!-- /.sidebar -->
       </aside>
 
       <!-- Right side column. Contains the navbar and content of the page -->
@@ -180,6 +264,9 @@
         <!-- Main content -->
         <section class="content">
           <div class="row">
+
+          </div>
+          <div>
             <table id="table2" class="table table-hover table-bordered stripe row-border order-column" cellspacing="0" width="100%">
               <thead>
               <tr>
@@ -189,11 +276,11 @@
                   <th>Tanggal Lahir</th>
                   <th>Agama</th>
                   <th>Penilaian</th>
-                  <th>Indikator</th>
+                  <th>Status</th>
               </tr>
               </thead>
             <tbody>
-                <?php
+              <?php
                 include "../connection.php";
                 $query = "SELECT * FROM anak_binaan";
                 $result = mysql_query($query);
@@ -212,9 +299,10 @@
                       echo "<td>" . $row['TEMPAT_LAHIR'] . "</td>\n\t";
                       echo "<td>" . $row['TANGGAL_LAHIR'] . "</td>\n\t";
                       echo "<td>" . $row['AGAMA'] . "</td>\n\t";
-                      echo "<td><a href=\"mh_penilaian_harian.php?id_anak=" . $row['ID_ANAK'] . "\"><i class=\"glyphicon glyphicon-list-alt\"></i></a></td></tr>\n\t";
+                      echo "<td><center><a href=\"mh_penilaian_mingguan.php?id_anak=" . $row['ID_ANAK'] . "\"><i class=\"glyphicon glyphicon-list-alt\"></i></a></center></td></tr>\n\t";
                     }
-                } else {
+                }
+                else {
                     echo 'Invalid query: ' . mysql_error() . "\n";
                     echo 'Whole query: ' . $query; 
                 }
