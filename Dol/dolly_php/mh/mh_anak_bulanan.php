@@ -1,8 +1,14 @@
-<!DOCTYPE html>
+<?php
+  include '../connection.php';
+  session_start();
+  if (!isset($_SESSION['username'])) {
+    header('location:../index.php');
+  }
+?><!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Admin DollyCare | Dashboard</title>
+    <title>Kakak Asuh DollyCare | Dashboard</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -54,13 +60,10 @@
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               
-              <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  
-                  <i class="glyphicon glyphicon-off"></i>
-                  <span class="hidden-xs">Logout</span>
+             <li class="dropdown user user-menu">
+                <a href="../cek_logout.php" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="glyphicon glyphicon-off"></i><span class="hidden-xs">Logout</span>
                 </a>
-               
               </li>
             </ul>
           </div>
@@ -75,7 +78,7 @@
               <img src="../../dist/img/user.png" alt="User Image"/>
             </div>
             <div class="pull-left info">
-              <h4>Admin</h4>
+              <h4>Kakak Asuh </h4>
             </div>
           </div>
           <!-- /.search form -->

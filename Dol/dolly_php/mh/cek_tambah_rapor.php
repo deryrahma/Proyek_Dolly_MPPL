@@ -25,7 +25,7 @@
 	 	$query = "INSERT INTO rapor_harian VALUES (''," . $tampung[$i][0] . "," . $id_jadwal . "," . $tampung[$i][2] . "," .$tampung[$i][3] . ")";
 		echo "<BR>" . $query;
 		if(mysql_query($query)){
-			header('location:mh_bulanan.php');
+			header('location:mh_report_harian.php');
 		}
 	 }
 

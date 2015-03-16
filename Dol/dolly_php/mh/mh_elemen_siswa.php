@@ -1,8 +1,14 @@
-<!DOCTYPE html>
+<?php
+  include '../connection.php';
+  session_start();
+  if (!isset($_SESSION['username'])) {
+    header('location:../index.php');
+  }
+?><!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Admin DollyCare | Dashboard</title>
+    <title>Kakak Asuh DollyCare | Dashboard</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -54,13 +60,10 @@
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               
-              <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  
-                  <i class="glyphicon glyphicon-off"></i>
-                  <span class="hidden-xs">Logout</span>
+             <li class="dropdown user user-menu">
+                <a href="../cek_logout.php" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="glyphicon glyphicon-off"></i><span class="hidden-xs">Logout</span>
                 </a>
-               
               </li>
             </ul>
           </div>
@@ -75,7 +78,7 @@
               <img src="../../dist/img/user.png" alt="User Image"/>
             </div>
             <div class="pull-left info">
-              <h4>Admin</h4>
+              <h4>Kakak Asuh</h4>
             </div>
           </div>
           <!-- /.search form -->
@@ -86,14 +89,15 @@
               <a href="mh_hapus_pilih.php"><i class="glyphicon glyphicon-trash"></i></a></span></center>
               <br/>
             <li class="header">MENU UTAMA</li>
-            <!-- Data Elemen -->
-            <li class="treeview">
-              <a href="mh_edit_kakak.php">
-                <img src="../../dist/img/icon2.png"/ width="10%" height="10%">
-                <span>Profil</span>
-              </a>
-            </li>
             
+            <li class="treeview">
+              <a href="mh_profil_diri.php">
+                <img src="../../dist/img/icon2.png"/ width="10%" height="10%">
+                <span>Profil Diri</span>
+              </a>
+            </li> 
+
+            <!-- Data Elemen -->
             <li class="treeview">
               <a href="#">
                 <img src="../../dist/img/population.png"/ width="10%" height="10%">
@@ -116,12 +120,33 @@
               </ul>
             </li>
 
-            <!-- Pelatihan -->
+            <!-- Rapor Penilaian -->
             <li class="treeview">
-              <a href="mh_pelatihan.php">
-                <img src="../../dist/img/training-icon.png"/ width="10%" height="10%">
-                <span>Pelatihan</span>
+              <a href="#">
+                <img src="../../dist/img/doc-icon.png"/ width="10%" height="10%">
+                <span>Rapor Penilaian</span>
+                <i class="glyphicon glyphicon-chevron-down pull-right"></i>
               </a>
+              <ul class="treeview-menu">
+                <li class="treeview">
+                  <a href="mh_nilai_harian.php">
+                     <img src="../../dist/img/red.png"/ width="10%" height="10%">
+                    <span>Penilaian Harian</span>    
+                  </a>
+                </li>
+                <li class="treeview">
+                  <a href="mh_nilai_mingguan.php">
+                     <img src="../../dist/img/yellow.png"/ width="10%" height="10%">
+                     <span>Penilaian Mingguan</span>
+                  </a>
+                </li>
+                <li class="treeview">
+                  <a href="mh_nilai_bulanan.php">
+                     <img src="../../dist/img/green.png"/ width="10%" height="10%">
+                     <span>Penilaian Bulanan</span>
+                  </a>
+                </li>
+              </ul>
             </li>
 
             <!-- Report -->
@@ -133,25 +158,26 @@
               </a>
               <ul class="treeview-menu">
                 <li class="treeview">
-                  <a href="mh_harian.php">
+                  <a href="mh_report_harian.php">
                      <img src="../../dist/img/red.png"/ width="10%" height="10%">
                     <span>Report Harian</span>    
                   </a>
                 </li>
                 <li class="treeview">
-                  <a href="mh_mingguan.php">
+                  <a href="mh_report_mingguan.php">
                      <img src="../../dist/img/yellow.png"/ width="10%" height="10%">
                      <span>Report Mingguan</span>
                   </a>
                 </li>
                 <li class="treeview">
-                  <a href="mh_bulanan.php">
+                  <a href="mh_report_bulanan.php">
                      <img src="../../dist/img/green.png"/ width="10%" height="10%">
                      <span>Report Bulanan</span>
                   </a>
                 </li>
               </ul>
-            </li>          
+            </li>
+                      
           </ul>
         </section>
         <!-- /.sidebar -->
