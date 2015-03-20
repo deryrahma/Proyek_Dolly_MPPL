@@ -58,9 +58,7 @@
             <ul class="nav navbar-nav">
               
              <li class="dropdown user user-menu">
-                <a href="../cek_logout.php" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="glyphicon glyphicon-off"></i><span class="hidden-xs">Logout</span>
-                </a>
+                <a href="../cek_logout.php"><i class="glyphicon glyphicon-off"></i><span class="hidden-xs">Logout</span></a>
               </li>
             </ul>
           </div>
