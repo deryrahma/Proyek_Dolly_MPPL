@@ -1,10 +1,9 @@
-
 /*==============================================================*/
 /* Table: ANAK_BINAAN                                           */
 /*==============================================================*/
 create table ANAK_BINAAN
 (
-   ID_ANAK              int not null auto_increment,
+   ID_ANAK              int not null,
    ID_KAKAK             int,
    NAMA_ANAK            varchar(100),
    JK_ANAK              char(1),
@@ -31,10 +30,12 @@ create table ANAK_BINAAN
 /*==============================================================*/
 create table KAKAK_ASUH
 (
-   ID_KAKAK             int not null auto_increment,
+   ID_KAKAK             int not null,
    NAMA_KAKAK           varchar(50) not null,
    ALAMAT_KAKAK         varchar(150) not null,
    NO_TELPON_KAKAK      varchar(13) not null,
+   USERNAME             varchar(15),
+   PASSWORD             varchar(10) not null,
    primary key (ID_KAKAK)
 );
 
@@ -43,7 +44,7 @@ create table KAKAK_ASUH
 /*==============================================================*/
 create table LAPORAN_HARIAN
 (
-   ID_LAP_HARIAN        int not null auto_increment,
+   ID_LAP_HARIAN        int not null,
    ID_PELATIHAN         int,
    HARI_LAP_HARIAN      varchar(10),
    TANGGAL_LAP_HARIAN   date,
@@ -56,7 +57,7 @@ create table LAPORAN_HARIAN
 /*==============================================================*/
 create table LAPORAN_MINGGUAN
 (
-   ID_LAP_MINGGUAN      int not null auto_increment,
+   ID_LAP_MINGGUAN      int not null,
    ID_LAP_HARIAN        int,
    HARI_LAP_MINGGUAN    varchar(10) not null,
    TANGGAL_LAP_MINGGUAN date not null,
@@ -71,11 +72,22 @@ create table LAPORAN_MINGGUAN
 );
 
 /*==============================================================*/
+/* Table: MEMPUNYAI                                             */
+/*==============================================================*/
+create table MEMPUNYAI
+(
+   ID_ANAK              int not null,
+   ID_PELATIHAN         int not null,
+   NILAI                int,
+   primary key (ID_ANAK, ID_PELATIHAN)
+);
+
+/*==============================================================*/
 /* Table: PARAMETER                                             */
 /*==============================================================*/
 create table PARAMETER
 (
-   ID_PARAMETER         int not null auto_increment,
+   ID_PARAMETER         int not null,
    ID_PELATIHAN         int,
    PARAMETER            varchar(1024) not null,
    primary key (ID_PARAMETER)
@@ -86,8 +98,7 @@ create table PARAMETER
 /*==============================================================*/
 create table PELATIHAN
 (
-   ID_PELATIHAN         int not null auto_increment,
-   ID_ANAK              int,
+   ID_PELATIHAN         int not null,
    NAMA_PELATIHAN       varchar(100) not null,
    primary key (ID_PELATIHAN)
 );
@@ -101,8 +112,11 @@ alter table LAPORAN_HARIAN add constraint FK_RELATIONSHIP_4 foreign key (ID_PELA
 alter table LAPORAN_MINGGUAN add constraint FK_RELATIONSHIP_5 foreign key (ID_LAP_HARIAN)
       references LAPORAN_HARIAN (ID_LAP_HARIAN) on delete restrict on update restrict;
 
-alter table PARAMETER add constraint FK_RELATIONSHIP_3 foreign key (ID_PELATIHAN)
+alter table MEMPUNYAI add constraint FK_MEMPUNYAI foreign key (ID_ANAK)
+      references ANAK_BINAAN (ID_ANAK) on delete restrict on update restrict;
+
+alter table MEMPUNYAI add constraint FK_MEMPUNYAI2 foreign key (ID_PELATIHAN)
       references PELATIHAN (ID_PELATIHAN) on delete restrict on update restrict;
 
-alter table PELATIHAN add constraint FK_RELATIONSHIP_2 foreign key (ID_ANAK)
-      references ANAK_BINAAN (ID_ANAK) on delete restrict on update restrict;
+alter table PARAMETER add constraint FK_RELATIONSHIP_3 foreign key (ID_PELATIHAN)
+      references PELATIHAN (ID_PELATIHAN) on delete restrict on update restrict;

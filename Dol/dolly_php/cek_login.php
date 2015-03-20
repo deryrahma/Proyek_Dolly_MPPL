@@ -2,29 +2,28 @@
 include 'connection.php';
 
 session_start();
-$_SESSION['username'] = $username;
-$_SESSION['password'] = $password;
 
 $user = $_POST['username'];
 $pass = $_POST['password'];
 
 $ada = false;
-$result = mysql_query("SELECT * FROM pemerintah");
+$result = mysql_query("SELECT * FROM kakak_asuh");
 while ($row = mysql_fetch_array($result)) {
 	if ($row['USERNAME'] == $user AND $row['PASSWORD'] == $pass) {
+		$_SESSION['username'] = $user;
+		$_SESSION['password'] = $pass;
+		$_SESSION['id_kakak'] = $row['ID_KAKAK'];
 		$ada = true;
-		if ($row['JABATAN'] == "lurah") {
-			header('lurah_panel.php');
-		} else if ($row['JABATAN'] == "rt") {
-			header('rt_panel.php');
+		if ($row['USERNAME'] == "admin") {
+			header('location:adm/adm_panel.php');
 		} else {
-			echo "anda RW";
+			header('location:mh/mh_panel.php');
 		}
 	}
 }
 
 if(!$ada){
-	echo "username / password salah";
+	header('location:index.php');
 }
 
 ?>
