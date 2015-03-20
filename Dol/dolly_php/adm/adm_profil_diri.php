@@ -158,7 +158,7 @@
           <!-- Main row -->
           <div class="row">
             <?php
-            $ID_KAKAK = $_GET['id_kakak'];
+            $ID_KAKAK = $_SESSION['id_kakak'];
             include "../connection.php";
             $query = "SELECT * FROM KAKAK_ASUH WHERE ID_KAKAK = " . " \"$ID_KAKAK\" ";
             $result = mysql_query($query);
