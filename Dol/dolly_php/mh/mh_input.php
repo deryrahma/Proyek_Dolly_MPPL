@@ -312,7 +312,7 @@
                   </select>
                 </div>
               </div>
-              <!--<div class="form-group">
+              <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Foto Anak Binaan</label>
                 <div class="col-sm-6">
                   <input type="file" class="form-control" name="foto_anak" placeholder="Foto Anak Binaan">
@@ -323,7 +323,7 @@
                   <button type="submit" class="btn btn-success">Tambah</button>
                   <button type="reset" class="btn btn-danger">Batal</button>
                 </div>
-              </div>-->
+              </div>
             </form>
           
           </div>

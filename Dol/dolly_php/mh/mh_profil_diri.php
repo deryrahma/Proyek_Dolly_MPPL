@@ -174,6 +174,26 @@
         <section class="content">
           <!-- Info boxes -->
           <div class="row">
+            <?php
+              $ID_KAKAK = $_SESSION['id_kakak'];
+              include "../connection.php";
+              $query = "SELECT * FROM KAKAK_ASUH WHERE ID_KAKAK = " . " \"$ID_KAKAK\" ";
+              $result = mysql_query($query);
+              if($result)
+              {
+                echo "<table>\n\t";
+                while($row = mysql_fetch_array($result))
+                {
+                  echo "<tr><td>&nbsp;&nbsp;<b>Nama Kakak</b></td><td>&nbsp;&nbsp;:&nbsp;&nbsp;</td><td>" . $row['NAMA_KAKAK'] . "</td></tr>\n";
+                  echo "<tr><td>&nbsp;&nbsp;<b>Alamat Kakak</b></td><td>&nbsp;&nbsp;:&nbsp;&nbsp;</td><td>" . $row['ALAMAT_KAKAK'] . "</td></tr>\n";
+                  echo "<tr><td>&nbsp;&nbsp;<b>No. Telpon Kakak</b></td><td>&nbsp;&nbsp;:&nbsp;&nbsp;</td><td>" . $row['NO_TELPON_KAKAK'] . "</td></tr>\n";
+                }
+                echo "</table>\n";
+              } else {
+                echo 'Invalid query: ' . mysql_error() . "\n";
+                echo 'Whole query: ' . $query; 
+              }
+            ?>
 
           </div> 
         </section>
