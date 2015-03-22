@@ -36,7 +36,7 @@
       
       <header class="main-header">
         <!-- Logo -->
-        <a href="adm_panel.php" class="logo"><b>Dolly</b>Care</a>
+        <a href="mh_panel.php" class="logo"><b>Dolly</b>Care</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
 
@@ -60,14 +60,15 @@
               <img src="../../dist/img/user.png" alt="User Image"/>
             </div>
             <div class="pull-left info">
-              <h4>Admin</h4>
+              <h4>Kakak Asuh</h4>
             </div>
           </div>
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            
+                      
             <li class="header">MENU UTAMA</li>    
+
 
             <!-- Profil Diri -->
             <li class="treeview">
@@ -135,89 +136,47 @@
               </ul>
             </li>
 
-            
           </ul>
         </section>
         <!-- /.sidebar -->
       </aside>
 
-       <div class="content-wrapper">
+      <!-- Right side column. Contains the navbar and content of the page -->
+      <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            <center>Profil Diri Kakak Asuh</center><hr>
+            Selamat Datang, Kakak Asuh Melukis Harapan !
           </h1>
         </section>
         
-        
         <!-- Main content -->
         <section class="content">
-
-          <!-- Main row -->
+          <!-- Info boxes -->
           <div class="row">
             <?php
-            $ID_KAKAK = $_SESSION['id_kakak'];
-            include "../connection.php";
-            $query = "SELECT * FROM KAKAK_ASUH WHERE ID_KAKAK = " . " \"$ID_KAKAK\" ";
-            $result = mysql_query($query);
-            if($result)
-            {
+              $ID_KAKAK = $_SESSION['id_kakak'];
+              include "../connection.php";
+              $query = "SELECT * FROM KAKAK_ASUH WHERE ID_KAKAK = " . " \"$ID_KAKAK\" ";
+              $result = mysql_query($query);
+              if($result)
+              {
+                echo "<table>\n\t";
                 while($row = mysql_fetch_array($result))
                 {
-                  echo "<label>Nama Kakak:\t</label>" . $row['NAMA_KAKAK'] . "<br>";
-                  echo "<label>Alamat Kakak:\t</label>" . $row['ALAMAT_KAKAK'] . "<br>";
-                  echo "<label>No. Telpon Kakak:\t</label>" . $row['NO_TELPON_KAKAK'] . "<br>";
+                  echo "<tr><td>&nbsp;&nbsp;<b>Nama Kakak</b></td><td>&nbsp;&nbsp;:&nbsp;&nbsp;</td><td>" . $row['NAMA_KAKAK'] . "</td></tr>\n";
+                  echo "<tr><td>&nbsp;&nbsp;<b>Alamat Kakak</b></td><td>&nbsp;&nbsp;:&nbsp;&nbsp;</td><td>" . $row['ALAMAT_KAKAK'] . "</td></tr>\n";
+                  echo "<tr><td>&nbsp;&nbsp;<b>No. Telpon Kakak</b></td><td>&nbsp;&nbsp;:&nbsp;&nbsp;</td><td>" . $row['NO_TELPON_KAKAK'] . "</td></tr>\n";
                 }
-            } else {
+                echo "</table>\n";
+              } else {
                 echo 'Invalid query: ' . mysql_error() . "\n";
                 echo 'Whole query: ' . $query; 
-            }
-          ?>
-          
-            <!--<form class="form-horizontal" action="cek_edit.php" method="post">
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">Nama Lengkap</label>
-                <div class="col-sm-6">
-                  <input type="hidden" name="nama_kakak" value=<?php echo $nama_kakak; ?>>
-                  <input type="text" class="form-control" name="nama_kakak" placeholder="Nama lengkap kakak asuh" value=<?php echo "\"" . $nama_kakak . "\""; ?>>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">Alamat Rumah</label>
-                <div class="col-sm-6">
-                  <input type="text" class="form-control" name="alamat_kakak" placeholder="Alamat kakak asuh" value=<?php echo "\"" . $alamat_kakak . "\""; ?>>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">No Telpon Kakak Asuh</label>
-                <div class="col-sm-6">
-                  <input type="text" class="form-control" name="no_telp_kakak" placeholder="No telp kakak asuh" value=<?php echo "\"" . $no_telp_kakak . "\""; ?>>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">Username</label>
-                <div class="col-sm-6">
-                  <input type="text" class="form-control" name="username" placeholder="Username" value=<?php echo "\"" . $username . "\""; ?>>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">Password</label>
-                <div class="col-sm-6">
-                  <input type="text" class="form-control" name="password" placeholder="Password" value=<?php echo "\"" . $password . "\""; ?>>
-                </div>
-              </div>
-             
-              </div>
-              <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-10">
-                  <button type="submit" class="btn btn-success">UPDATE</button>
-                  <button type="reset" class="btn btn-danger">Batal</button>
-                </div>
-              </div>
-            </form>-->
-          
-          </div>
-
+              }
+            ?>
+          </div> 
+        </section>
+      </div>
 
       <footer class="main-footer">
         <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Dolly Softwarehouse Ltd.</a></strong> All rights reserved.
