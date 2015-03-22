@@ -198,7 +198,7 @@
                   <th>Nama Lengkap</th>
                   <th>Alamat Rumah</th>
                   <th>No Telpon</th>
-                  
+                  <th>Foto Kakak</th>
               </tr>
               </thead>
             <tbody>
@@ -223,7 +223,8 @@
                       echo "<td>" . $row['NAMA_KAKAK'] . "</td>\n\t";
                       echo "<td>" . $row['ALAMAT_KAKAK'] . "</td>\n\t";
                       echo "<td>" . $row['NO_TELPON_KAKAK'] . "</td>\n\t";
-  
+                      echo '<td><img width="50px" heigth="50px" src="data:image/jpeg;base64,'.base64_encode( $row['FOTO_KAKAK'] ).'"/></td>';
+                      echo "</tr>\n\t";
                     }
                 } else {
                     echo 'Invalid query: ' . mysql_error() . "\n";

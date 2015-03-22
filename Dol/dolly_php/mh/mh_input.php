@@ -180,7 +180,7 @@
           <!-- Main row -->
           <div class="row">
           
-            <form class="form-horizontal" action="cek_tambah.php" method="post">
+            <form class="form-horizontal" action="cek_tambah.php" method="post" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Nama Lengkap</label>
                 <div class="col-sm-6">
@@ -312,12 +312,18 @@
                   </select>
                 </div>
               </div>
+              <!--<div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">Foto Anak Binaan</label>
+                <div class="col-sm-6">
+                  <input type="file" class="form-control" name="foto_anak" placeholder="Foto Anak Binaan">
+                </div>
+              </div>
               <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-10">
                   <button type="submit" class="btn btn-success">Tambah</button>
                   <button type="reset" class="btn btn-danger">Batal</button>
                 </div>
-              </div>
+              </div>-->
             </form>
           
           </div>
