@@ -135,12 +135,6 @@
                      <span>Penilaian Mingguan</span>
                   </a>
                 </li>
-                <li class="treeview">
-                  <a href="mh_nilai_bulanan.php">
-                     <img src="../../dist/img/green.png"/ width="10%" height="10%">
-                     <span>Penilaian Bulanan</span>
-                  </a>
-                </li>
               </ul>
             </li>
 
@@ -190,18 +184,6 @@
                   Laporan Mingguan
                 </h1>
               </td>
-              <td>
-                <div class="col-md-4 pull-right">
-                  <form action="#" method="get" class="sidebar-form">
-                    <div class="input-group">
-                      <input type="text" name="q" class="form-control" placeholder="Cari..."/>
-                      <span class="input-group-btn">
-                        <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="glyphicon glyphicon-search"></i></button>
-                      </span>
-                    </div>
-                  </form>
-                </div>
-              </td>
             </tr>
           </table>
         </section>
@@ -211,20 +193,29 @@
           <!-- Info boxes -->
           <div class="row">
 
-              <div>
-            <h3>
-              <?php echo date("l, d F Y"); ?>
-            </h3>
-          </div><br>
-          <div>
-
-            <form class="form-inline" method="GET" action="mh_anak_mingguan.php">
-
-              <div class="form-group">
-                <h4>Pelatihan : </h4>
-              </div>
-              <div class="form-group">
-                <div class="form-group">
+              <form class="form-inline" method="POST" action="cek_tambah_jadwal2.php">
+            <table>
+              <tr>
+                <td>
+                  <div class="form-group">
+                    <h4>
+                      Tanggal
+                    </h4>
+                  </div>
+                </td>
+                <td align="right">
+                  <div class="form-group">
+                    <input type="date" name="tanggal_lap_mingguan">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-group">
+                    <h4>Pelatihan </h4>
+                  </div>
+                </td>
+                <td>
                   <select class="form-control" id="sel1" name="id_pelatihan">
                     <?php
                     include "../connection.php";
@@ -235,25 +226,26 @@
                         while($row = mysql_fetch_array($result))
                         {
                           echo "<option value=" . $row['ID_PELATIHAN'] . ">" . $row['NAMA_PELATIHAN'] . "</option>";
-                          
                         }
                     }
                    ?>
                   </select>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-info">Pilih</button>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td align="right">
+                  <div>
+                    <button type="submit" class="btn btn-info">Pilih</button>  
+                  </div>
+                </td>
+              </tr>
+            </table>              
             </form>
-          </div>
 
           </div><!-- /.row -->
 
           <!-- Main row -->
-          
-          
-          
-              
-          
 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->

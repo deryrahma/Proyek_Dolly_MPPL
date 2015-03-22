@@ -129,12 +129,6 @@
                      <span>Penilaian Mingguan</span>
                   </a>
                 </li>
-                <li class="treeview">
-                  <a href="mh_nilai_bulanan.php">
-                     <img src="../../dist/img/green.png"/ width="10%" height="10%">
-                     <span>Penilaian Bulanan</span>
-                  </a>
-                </li>
               </ul>
             </li>
 
@@ -196,15 +190,15 @@
           <div class="row">
             <div class="box box-success">
                 <div class="box-header">
-                  <h3 class="box-title">Diagram Perkembangan Harian selama Seminggu</h3>
+                  <h3 class="box-title">Diagram Perkembangan Anak Binaan selama Seminggu</h3>
                 </div>
                 <div class="box-body chart-responsive">
                   <div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
                 </div>
             </div>
 
-          
-            <form class="form-horizontal" method="POST" action="cek_tambah_mingguan.php">
+            <?php echo
+            "<form class=\"form-horizontal\" method=\"POST\" action=\"cek_tambah_mingguan.php?id_anak=" . $_GET['id_anak'] . "&&tanggal_lap_mingguan=".$_GET['tanggal_lap_mingguan']."\">"; ?>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label"><b> Nama Lengkap </b></label>
                 <div class="col-sm-6">
