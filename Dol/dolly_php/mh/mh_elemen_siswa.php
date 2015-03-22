@@ -138,12 +138,6 @@
                      <span>Penilaian Mingguan</span>
                   </a>
                 </li>
-                <li class="treeview">
-                  <a href="mh_nilai_bulanan.php">
-                     <img src="../../dist/img/green.png"/ width="10%" height="10%">
-                     <span>Penilaian Bulanan</span>
-                  </a>
-                </li>
               </ul>
             </li>
 
@@ -194,9 +188,15 @@
               </td>
               <td>
                 <div class="col-md-4 pull-right">
-                  <form action="#" method="get" class="sidebar-form">
+                  <form action="mh_elemen_siswa.php" method="get" class="sidebar-form">
                     <div class="input-group">
-                      <input type="text" name="q" class="form-control" placeholder="Cari..."/>
+                      <?php
+                        if (isset($_GET['val_search'])){
+                          echo '<input type="text" name="val_search" class="form-control" placeholder="Cari..." value="' . $_GET['val_search'] . '" />';
+                        } else{
+                          echo '<input type="text" name="val_search" class="form-control" placeholder="Cari..." />';
+                        }
+                      ?>
                       <span class="input-group-btn">
                         <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="glyphicon glyphicon-search"></i></button>
                       </span>
@@ -237,7 +237,11 @@
             <tbody>
                 <?php
                 include "../connection.php";
-                $query = "SELECT * FROM anak_binaan, kakak_asuh where anak_binaan.id_kakak = kakak_asuh.id_kakak";
+                if (isset($_GET['val_search'])) {
+                  $query = "SELECT * FROM kakak_asuh, anak_binaan WHERE anak_binaan.ID_KAKAK = kakak_asuh.ID_KAKAK AND (anak_binaan.NAMA_ANAK LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.JK_ANAK LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.TEMPAT_LAHIR LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.TANGGAL_LAHIR LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.AGAMA LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ANAK_KE LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ALAMAT_SISWA LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.TANGGAL_MASUK LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.KELAS LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.NAMA_SEKOLAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.SEKOLAH_ASAL LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ALAMAT_SEKOLAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.NAMA_SEKOLAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.SEKOLAH_ASAL LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ALAMAT_SEKOLAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.NAMA_AYAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.NAMA_IBU LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ALAMAT_ORTU LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.PEKERJAAN_AYAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.PEKERJAAN_IBU LIKE '%" . $_GET['val_search'] . "%')";
+                } else {
+                  $query = "SELECT * FROM anak_binaan, kakak_asuh where anak_binaan.ID_KAKAK = kakak_asuh.ID_KAKAK";
+                }
                 $result = mysql_query($query);
                 if($result)
                 {

@@ -145,9 +145,31 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>
-            Menghapus Pelatihan
-          </h1>
+          <table id="table1">
+            <tr>
+              <td width="80%">
+                <h1>
+                  Menghapus Pelatihan
+                </h1>
+              </td>
+              <td width="20%">
+                <form action="adm_hapus_pelatihan.php" method="get" class="sidebar-form">
+                  <div class="input-group">
+                    <?php
+                      if (isset($_GET['val_search'])){
+                        echo '<input type="text" name="val_search" class="form-control" placeholder="Cari..." value="' . $_GET['val_search'] . '" />';
+                      } else{
+                        echo '<input type="text" name="val_search" class="form-control" placeholder="Cari..." />';
+                      }
+                    ?>
+                    <span class="input-group-btn">
+                      <button type='submit' id='search-btn' class="btn btn-flat"><i class="glyphicon glyphicon-search"></i></button>
+                    </span>
+                  </div>
+                </form>
+              </td>
+            </tr>
+          </table>
         </section>
         
         <!-- Main content -->
@@ -165,7 +187,11 @@
             <tbody>
                 <?php
                 include "../connection.php";
-                $query = "SELECT * FROM pelatihan";
+                if (isset($_GET['val_search'])) {
+                  $query = "SELECT * FROM pelatihan WHERE NAMA_PELATIHAN LIKE '%" . $_GET['val_search'] . "%'";
+                } else {
+                  $query = "SELECT * FROM pelatihan";
+                }
                 $result = mysql_query($query);
                 $i = 0;
                 if($result)

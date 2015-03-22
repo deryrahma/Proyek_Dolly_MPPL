@@ -162,22 +162,26 @@
         <section class="content-header">
           <table id="table1">
             <tr>
-              <td>
+              <td width="80%">
                 <h1>
                   Data Kakak Asuh
                 </h1>
               </td>
-              <td>
-                <div class="col-md-4 pull-right">
-                  <form action="#" method="get" class="sidebar-form">
-                    <div class="input-group">
-                      <input type="text" name="q" class="form-control" placeholder="Cari..."/>
-                      <span class="input-group-btn">
-                        <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="glyphicon glyphicon-search"></i></button>
-                      </span>
-                    </div>
-                  </form>
-                </div>
+              <td width="20%">
+                <form action="adm_lihat_kakak.php" method="get" class="sidebar-form">
+                  <div class="input-group">
+                    <?php
+                      if (isset($_GET['val_search'])){
+                        echo '<input type="text" name="val_search" class="form-control" placeholder="Cari..." value="' . $_GET['val_search'] . '" />';
+                      } else{
+                        echo '<input type="text" name="val_search" class="form-control" placeholder="Cari..." />';
+                      }
+                    ?>
+                    <span class="input-group-btn">
+                      <button type='submit' id='search-btn' class="btn btn-flat"><i class="glyphicon glyphicon-search"></i></button>
+                    </span>
+                  </div>
+                </form>
               </td>
             </tr>
           </table>
@@ -200,7 +204,12 @@
             <tbody>
                 <?php
                 include "../connection.php";
-                $query = "SELECT * FROM kakak_asuh";
+                if (isset($_GET['val_search'])) {
+                  $query = "SELECT * FROM kakak_asuh WHERE NAMA_KAKAK LIKE '%" . $_GET['val_search'] . "%' OR ALAMAT_KAKAK LIKE '%" . $_GET['val_search'] . "%' OR NO_TELPON_KAKAK LIKE '%" . $_GET['val_search'] . "%'";
+                } else {
+                  $query = "SELECT * FROM kakak_asuh";
+                }
+                
                 $result = mysql_query($query);
                 $i=0;
                 if($result)

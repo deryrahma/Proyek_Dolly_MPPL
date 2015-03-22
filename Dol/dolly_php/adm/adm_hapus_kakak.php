@@ -146,7 +146,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Selamat Datang, Admin Melukis Harapan !
+            Menghapus Kakak Asuh
           </h1>
         </section>
         

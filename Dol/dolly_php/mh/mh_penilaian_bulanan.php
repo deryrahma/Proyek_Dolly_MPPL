@@ -137,12 +137,6 @@
                      <span>Penilaian Mingguan</span>
                   </a>
                 </li>
-                <li class="treeview">
-                  <a href="mh_nilai_bulanan.php">
-                     <img src="../../dist/img/green.png"/ width="10%" height="10%">
-                     <span>Penilaian Bulanan</span>
-                  </a>
-                </li>
               </ul>
             </li>
 
