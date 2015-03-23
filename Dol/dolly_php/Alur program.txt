@@ -1,0 +1,89 @@
+Alur program
+
+1. kakak asuh:
+-data elemen
+	kakak_asuh (mh_elemen_kakak.php):
+	=> proses bisnis: menampilkan kakak asuh (v)
+	anak_binaan (mh_elemen_siswa.php:
+	=> proses bisnis: menampilkan siswa binaan (menampilkan sesuai kakak asuh) (v)
+
+-rapor penilaian:
+--> harian:
+	1. mh_nilai_harian.php
+		=> dapat get: -
+		=> proses bisnis: memilih tanggal dan nama pelatihan
+	2. cek_tambah_jadwal_harian.php
+		=> dapat get: jadwal_pelatihan, id_pelatihan
+		=> proses bisnis:
+			1. cek apakah ada record di tabel jadwal_pelatihan, dengan tanggal (sesuai jadwal_pelatihan) dan pelatihan (sesuai id_pelatihan)
+			2. bila ada, ke mh_anak_harian.php langsung
+			3. bila tidak, tambah record di tabel jadwal_pelatihan sesuai dengan id_pelatihan dan jadwal_pelatihan
+	3. mh_anak_harian.php
+		=> dapat get: id_pelatihan, jadwal_pelatihan (date)
+		=> proses bisnis: menampilkan anak binaan sesuai kakak asuh (v)
+	4. mh_penilaian_harian.php
+		=> dapat get: id_anak, id_pelatihan, jadwal_pelatihan
+		=> proses bisnis: mengisi nilai anak (sesuai id_anak), saat pelatihan (sesuai id_pelatihan), dan pada tanggal (sesuai jadwal_pelatihan)
+	5. cek_tambah_rapor.php
+		=> dapat post:
+			0 = id_anak
+			1 = jadwal_pelatihan
+			2 = id_parameter
+			3 = val nilai
+			4= id_pelatihan
+		=> proses bisnis: 
+			1. mencari value dari atribut id_pelatihan, berdasarkan value dari atribut jadwal_pelatihan
+			2. input ke tabel rapor_harian
+			3. kembali ke mh_anak_harian.php
+--> mingguan
+	1. mh_nilai_mingguan.php
+		=> dapat get: -
+		=> proses bisnis: memilih minggu, bulan, tahun pelatihan yang ingin direkap
+	2. cek_tambah_jadwal_mingguan.php
+		=> dapat post: minggu_ke, bulan_ke, tahun_ke, id_pelatihan
+		=> proses bisnis: mengecek apakah di waktu tsb sudah ada data rapor harian (v)
+			-> bila ada: lanjut ke mh_anak_mingguan.php
+			-> bila tidak ada: kembali ke mh_nilai_mingguan.php
+	3. mh_anak_mingguan.php
+		=> dapat get: minggu_ke, bulan_ke, tahun_ke, id_pelatihan
+		=> proses bisnis: mengisi nilai anak (sesuai id_anak), saat pelatihan (sesuai id_pelatihan), dan untuk minggu tsb (sesuai minggu_ke, bulan_ke, tahun_ke) (v)
+	4. mh_penilaian_mingguan.php
+		=> dapat get: minggu_ke, bulan_ke, tahun_ke, id_pelatihan, id_anak
+		=> proses bisnis:
+			1. perlihatkan rata2 nilai per parameter untuk anak X selama 1 minggu
+			2. mengisi rapor berdasarkan evaluasi tsb (v)
+	5. cek_tambah_mingguan.php
+		=> dapat get: 	minggu_ke, bulan_ke, tahun_ke, id_pelatihan, id_anak
+		=> dapat post:  perilaku_yang_diamati
+						perubahan_perilaku_yang_terjadi
+						sumber_informasi
+						cara_pendekatan
+						keterangan
+						cerita_menarik
+		=> proses bisnis:
+
+
+
+2. admin:
+-data elemen
+	kakak_asuh (mh_elemen_kakak.php):
+	=> proses bisnis: menampilkan kakak asuh (v)
+	anak_binaan (mh_elemen_siswa.php:
+	=> proses bisnis: menampilkan siswa binaan (menampilkan sesuai kakak asuh) (v)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------
+SARAN: 
+1. saat menambah pelatihan, sekaligus memberi tanda, siswa mana yang mengikuti pelatihan tsb (di form nya ditambahin)

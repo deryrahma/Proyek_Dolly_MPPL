@@ -193,54 +193,86 @@
           <!-- Info boxes -->
           <div class="row">
 
-              <form class="form-inline" method="POST" action="cek_tambah_jadwal2.php">
-            <table>
-              <tr>
-                <td>
-                  <div class="form-group">
-                    <h4>
-                      Tanggal
-                    </h4>
-                  </div>
-                </td>
-                <td align="right">
-                  <div class="form-group">
-                    <input type="date" name="tanggal_lap_mingguan">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="form-group">
-                    <h4>Pelatihan </h4>
-                  </div>
-                </td>
-                <td>
-                  <select class="form-control" id="sel1" name="id_pelatihan">
-                    <?php
-                    include "../connection.php";
-                    $query = "SELECT * from pelatihan";
-                    $result = mysql_query($query);
-                    if($result)
-                    {
-                        while($row = mysql_fetch_array($result))
-                        {
-                          echo "<option value=" . $row['ID_PELATIHAN'] . ">" . $row['NAMA_PELATIHAN'] . "</option>";
-                        }
-                    }
-                   ?>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td></td>
-                <td align="right">
-                  <div>
-                    <button type="submit" class="btn btn-info">Pilih</button>  
-                  </div>
-                </td>
-              </tr>
-            </table>              
+            <form class="form-inline" method="POST" action="cek_tambah_jadwal_mingguan.php">
+              <?php
+                if (isset($_GET['status'])) {
+                  echo "Tidak ada data pada minggu tersebut<br><br>";
+                }
+              ?>
+              <table>
+                <tr>
+                  <td>
+                    <div class="form-group">
+                      <h4>
+                        Minggu ke&nbsp;&nbsp;
+                      </h4>
+                    </div>
+                  </td>
+                  <td align="right">
+                    <div class="form-group">
+                      <select name="minggu_ke">
+                        <?php
+                          for ($i=1; $i < 6 ; $i++) { 
+                            echo "<option value=\"" . $i . "\">" . $i . "</option>";
+                          }
+                        ?>
+                      </select> &nbsp;
+                      <select name="bulan_ke">
+                        <option value="1">Jan</option>
+                        <option value="2">Feb</option>
+                        <option value="3">Mar</option>
+                        <option value="4">Apr</option>
+                        <option value="5">Mei</option>
+                        <option value="6">Jun</option>
+                        <option value="7">Jul</option>
+                        <option value="8">Agu</option>
+                        <option value="9">Sep</option>
+                        <option value="10">Okt</option>
+                        <option value="11">Nov</option>
+                        <option value="12">Des</option>
+                      </select> &nbsp;
+                      <select name="tahun_ke">
+                        <?php
+                          for ($i=date("Y"); $i >= 2000 ; $i--) { 
+                            echo "<option value=\"" . $i . "\">" . $i . "</option>";
+                          }
+                        ?>
+                      </select>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="form-group">
+                      <h4>Pelatihan&nbsp;&nbsp;</h4>
+                    </div>
+                  </td>
+                  <td>
+                    <select class="form-control" id="sel1" name="id_pelatihan">
+                      <?php
+                      include "../connection.php";
+                      $query = "SELECT * from pelatihan";
+                      $result = mysql_query($query);
+                      if($result)
+                      {
+                          while($row = mysql_fetch_array($result))
+                          {
+                            echo "<option value=" . $row['ID_PELATIHAN'] . ">" . $row['NAMA_PELATIHAN'] . "</option>";
+                          }
+                      }
+                     ?>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td align="right">
+                    <div>
+                      <button type="submit" class="btn btn-info">Pilih</button>  
+                    </div>
+                  </td>
+                </tr>
+              </table>              
             </form>
 
           </div><!-- /.row -->

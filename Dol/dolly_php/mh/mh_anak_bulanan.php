@@ -76,7 +76,7 @@
               <img src="../../dist/img/user.png" alt="User Image"/>
             </div>
             <div class="pull-left info">
-              <h4>Kakak Asuh </h4>
+              <h4>Kakak Asuh</h4>
             </div>
           </div>
           <!-- /.search form -->
@@ -86,7 +86,15 @@
               <a href="mh_edit_pilih.php"><i class="glyphicon glyphicon-pencil">&nbsp;&nbsp;&nbsp;</i></a>
               <a href="mh_hapus_pilih.php"><i class="glyphicon glyphicon-trash"></i></a></span></center>
               <br/>
-            <li class="header">MENU UTAMA</li>
+            <li class="header">MENU UTAMA</li>    
+
+            <li class="treeview">
+              <a href="mh_profil_diri.php">
+                <img src="../../dist/img/icon2.png"/ width="10%" height="10%">
+                <span>Profil Diri</span>
+              </a>
+            </li> 
+
             <!-- Data Elemen -->
             <li class="treeview">
               <a href="#">
@@ -110,12 +118,27 @@
               </ul>
             </li>
 
-            <!-- Pelatihan -->
+            <!-- Rapor Penilaian -->
             <li class="treeview">
-              <a href="mh_pelatihan.php">
-                <img src="../../dist/img/training-icon.png"/ width="10%" height="10%">
-                <span>Pelatihan</span>
+              <a href="#">
+                <img src="../../dist/img/doc-icon.png"/ width="10%" height="10%">
+                <span>Rapor Penilaian</span>
+                <i class="glyphicon glyphicon-chevron-down pull-right"></i>
               </a>
+              <ul class="treeview-menu">
+                <li class="treeview">
+                  <a href="mh_nilai_harian.php">
+                     <img src="../../dist/img/red.png"/ width="10%" height="10%">
+                    <span>Penilaian Harian</span>    
+                  </a>
+                </li>
+                <li class="treeview">
+                  <a href="mh_nilai_mingguan.php">
+                     <img src="../../dist/img/yellow.png"/ width="10%" height="10%">
+                     <span>Penilaian Mingguan</span>
+                  </a>
+                </li>
+              </ul>
             </li>
 
             <!-- Report -->
@@ -127,25 +150,27 @@
               </a>
               <ul class="treeview-menu">
                 <li class="treeview">
-                  <a href="mh_harian.php">
+                  <a href="mh_report_harian.php">
                      <img src="../../dist/img/red.png"/ width="10%" height="10%">
                     <span>Report Harian</span>    
                   </a>
                 </li>
                 <li class="treeview">
-                  <a href="mh_mingguan.php">
+                  <a href="mh_report_mingguan.php">
                      <img src="../../dist/img/yellow.png"/ width="10%" height="10%">
                      <span>Report Mingguan</span>
                   </a>
                 </li>
                 <li class="treeview">
-                  <a href="mh_bulanan.php">
+                  <a href="mh_report_bulanan.php">
                      <img src="../../dist/img/green.png"/ width="10%" height="10%">
                      <span>Report Bulanan</span>
                   </a>
                 </li>
               </ul>
-            </li>          
+            </li>
+
+            
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -199,7 +224,7 @@
             <tbody>
               <?php
                 include "../connection.php";
-                $query = "SELECT * FROM anak_binaan";
+                $query = "SELECT * FROM anak_binaan, kakak_asuh, rapor_harian, jadwal_pelatihan, pelatihan WHERE anak_binaan.ID_KAKAK = kakak_asuh.ID_KAKAK AND kakak_asuh.ID_KAKAK = " . $_SESSION['id_kakak'] . " AND anak_binaan.ID_ANAK=rapor_harian.ID_ANAK AND jadwal_pelatihan.ID_JADWAL = rapor_harian.ID_JADWAL AND pelatihan.ID_PELATIHAN = jadwal_pelatihan.ID_PELATIHAN AND jadwal_pelatihan.JADWAL_PELATIHAN = " . $_GET['jadwal_pelatihan'] . " AND jadwal_pelatihan.ID_PELATIHAN = " . $_GET['id_pelatihan'];
                 $result = mysql_query($query);
                 if($result)
                 {

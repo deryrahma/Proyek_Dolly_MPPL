@@ -18,6 +18,7 @@ while ($row = mysql_fetch_array($result)) {
 			header('location:adm/adm_panel.php');
 		} else {
 			header('location:mh/mh_panel.php');
+			echo $_SESSION['id_kakak'];
 		}
 	}
 }

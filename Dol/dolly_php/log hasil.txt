@@ -1,0 +1,6 @@
+LOG HASIL PERCOBAAN:
+
+tanggal		: 4 maret 2015 (41)
+anak(id,nilai)	: rina (2,90), nabilah (7,80), citra(8,70)
+pelatihan	: TPA (3)
+parameter	: ibadah (12)

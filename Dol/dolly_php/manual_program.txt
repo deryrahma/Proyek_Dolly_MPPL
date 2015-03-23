@@ -1,0 +1,19 @@
+1. admin
+2. kakak asuh
+	-mengisi rapor harian
+		1. Masukkan tanggal pelatihan dan nama pelatihannya
+		2. akan muncul list anak binaan dari kakak asuh tersebut.
+		3. pilih anak yang mau dikasih nilai
+		4. akan muncul list parameter sesuai pelatihan tsb.
+		5. isi nilai untuk anak tersebut untuk tiap parameter dari pelatihan tsb (yang telah dipilih tadi)
+		6. kembali ke no 2
+	-mengisi rapor mingguan
+		1. masukkan minggu, bulan, tahun, dan nama pelatihannya. Asumsi:
+			-Minggu ke 1: Tanggal 1-7
+			-Minggu ke 2: Tanggal 8-14
+			-Minggu ke 3: Tanggal 15-21
+			-Minggu ke 4: Tanggal 22-28
+			-Minggu ke 5: Tanggal 27-31
+	-liat report harian
+	-liat report mingguan
+	-liat report bulanan

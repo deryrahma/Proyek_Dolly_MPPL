@@ -183,7 +183,7 @@
             <tr>
               <td>
                 <h1>
-                  Data Siswa Binaain
+                  Data Siswa Binaan
                 </h1>
               </td>
               <td>
@@ -241,7 +241,7 @@
                 if (isset($_GET['val_search'])) {
                   $query = "SELECT * FROM kakak_asuh, anak_binaan WHERE anak_binaan.ID_KAKAK = kakak_asuh.ID_KAKAK AND (anak_binaan.NAMA_ANAK LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.JK_ANAK LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.TEMPAT_LAHIR LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.TANGGAL_LAHIR LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.AGAMA LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ANAK_KE LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ALAMAT_SISWA LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.TANGGAL_MASUK LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.KELAS LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.NAMA_SEKOLAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.SEKOLAH_ASAL LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ALAMAT_SEKOLAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.NAMA_SEKOLAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.SEKOLAH_ASAL LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ALAMAT_SEKOLAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.NAMA_AYAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.NAMA_IBU LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ALAMAT_ORTU LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.PEKERJAAN_AYAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.PEKERJAAN_IBU LIKE '%" . $_GET['val_search'] . "%')";
                 } else {
-                  $query = "SELECT * FROM anak_binaan, kakak_asuh where anak_binaan.ID_KAKAK = kakak_asuh.ID_KAKAK";
+                  $query = "SELECT * FROM anak_binaan, kakak_asuh where anak_binaan.ID_KAKAK = kakak_asuh.ID_KAKAK AND kakak_asuh.ID_KAKAK = " . $_SESSION['id_kakak'];
                 }
                 $result = mysql_query($query);
                 if($result)

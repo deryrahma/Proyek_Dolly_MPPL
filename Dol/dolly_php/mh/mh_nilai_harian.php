@@ -193,7 +193,7 @@
         <section class="content">
           <!-- Info boxes -->
           <div class="row">
-              <form class="form-inline" method="GET" action="cek_tambah_jadwal.php">
+              <form class="form-inline" method="GET" action="cek_tambah_jadwal_harian.php">
             <table>
               <tr>
                 <td>

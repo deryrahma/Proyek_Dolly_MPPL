@@ -197,13 +197,22 @@
                 </div>
             </div>
 
-            <?php echo
-            "<form class=\"form-horizontal\" method=\"POST\" action=\"cek_tambah_mingguan.php?id_anak=" . $_GET['id_anak'] . "&&tanggal_lap_mingguan=".$_GET['tanggal_lap_mingguan']."\">"; ?>
+            <?php
+              $id_pelatihan = $_GET['id_pelatihan'];
+              $minggu_ke = $_GET['minggu_ke'];
+              $bulan_ke = $_GET['bulan_ke'];
+              $tahun_ke = $_GET['tahun_ke'];
+              $id_anak = $_GET['id_anak'];
+              echo
+              "<form class=\"form-horizontal\" method=\"POST\" action=\"cek_tambah_mingguan.php?id_pelatihan=" . $id_pelatihan . "&&id_anak=" . $_GET['id_anak'] . "&&minggu_ke=" . $minggu_ke . "&&bulan_ke=" . $bulan_ke . "&&tahun_ke=" . $tahun_ke . "\">";
+            ?>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label"><b> Nama Lengkap </b></label>
                 <div class="col-sm-6">
                 <h4><?php
                   include "../connection.php";
+                  
+
                   $query = "SELECT * FROM anak_binaan WHERE ID_ANAK =" . $_GET['id_anak'];
                   $result = mysql_query($query);
                       if($result)
@@ -301,16 +310,89 @@
         var donut = new Morris.Donut({
           element: 'sales-chart',
           resize: true,
-          colors: ["#3c8dbc", "#f56954", "#00a65a"],
+          colors: ["red", "green", "blue", "yellow", "turquoise", "pink", "black", "purple", "orange", "magenta"],
           data: [
-            {label: "Leadership", value: 30},
-            {label: "Team Work", value: 50},
-            {label: "Tingkah Laku", value: 20}
+            <?php
+              $sql = "SELECT * FROM jadwal_pelatihan WHERE ID_PELATIHAN = " . $_GET['id_pelatihan'] . " ORDER BY JADWAL_PELATIHAN DESC";
+              $result = mysql_query($sql);
+              
+              if($result)
+              {
+                while($row = mysql_fetch_array($result))
+                {
+                  $flag = 0;
+                  $jadwal_pelatihan = explode("-", $row['JADWAL_PELATIHAN']);
+                  if ($jadwal_pelatihan[0] == $tahun_ke && $jadwal_pelatihan[1] == $bulan_ke)
+                  {
+                    if($minggu_ke == 1 && $jadwal_pelatihan[2] >= 1 && $jadwal_pelatihan[2] <= 7){
+                      $flag = 1;
+                    } else if($minggu_ke == 2 && $jadwal_pelatihan[2] >= 8 && $jadwal_pelatihan[2] <= 14){
+                      $flag = 1;
+                    } else if($minggu_ke == 3 && $jadwal_pelatihan[2] >= 15 && $jadwal_pelatihan[2] <= 21){
+                      $flag = 1;
+                    } else if($minggu_ke == 4 && $jadwal_pelatihan[2] >= 22 && $jadwal_pelatihan[2] <= 28){
+                      $flag = 1;
+                    } else if($minggu_ke == 5 && $jadwal_pelatihan[2] >= 29 && $jadwal_pelatihan[2] <= 31){
+                      $flag = 1;
+                    } 
+                    if($flag == 1)
+                    {
+                      $id_pel = $_GET['id_pelatihan'];
+                      $id_jad = $row['ID_JADWAL'];
+                      $jadwal_pel = $row['JADWAL_PELATIHAN'];
+                      $query = "SELECT * FROM pelatihan, parameter, rapor_harian WHERE pelatihan.ID_PELATIHAN =" . $id_pel . " AND pelatihan.ID_PELATIHAN = parameter.ID_PELATIHAN AND rapor_harian.ID_PARAMETER = parameter.ID_PARAMETER AND rapor_harian.ID_JADWAL = " . $id_jad . " AND rapor_harian.ID_ANAK = " . $id_anak;
+                      //echo "/*" . $query . "<br>*/";
+                      $result = mysql_query($query);
+                      if($result)
+                      {
+                        $count = 0;
+                        while($row = mysql_fetch_array($result))
+                        {
+                          /*
+                          $ada = 0;
+                          for($i = 0; $ada == 0 && $i < $count; $i++){
+                            if($listParameter[$i] == $row['PARAMETER']){
+                              $ada = 1;
+                            }
+                          }
+                          if($ada == 1 || $count == 0){
+                            $listParameter[$i] = $row['PARAMETER'];
+                            $count++;
+                          }
+                          $label[$row['PARAMETER']][0] = $row['PARAMETER']; //jenis parameter
+                          $label[$row['PARAMETER']][1] += $row['NILAI']; //besarnya nilai pada suatu parameter
+                          $label[$row['PARAMETER']][2]++; //jumlah record pada 1 parameter
+                          */
+                          /*
+                          if($count==0){
+                            $label[$row['PARAMETER']][0] = $row['PARAMETER'];
+                            $label[$row['PARAMETER']][1] = $row['NILAI'];
+                            $label[$row['PARAMETER']][2] = $row['PARAMETER'];
+                          }
+                          */
+                          /*
+                          $label[$row['PARAMETER']][0] += $row['NILAI']; //jumlah nilai
+                          $label[$row['PARAMETER']][1] += 1; //jumlah record
+                          $label[$row['PARAMETER']][2] = $row['PARAMETER']; //jumlah record
+                          */
+                          //$count++;
+                          echo "{label: \"" . $row['PARAMETER'] . "\", value: " . $row['NILAI'] . "},\n";
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              /*
+              for ($i=0; $i < $count; $i++) { 
+                echo "{label: \"" . $label[$listParameter[$i]][0] . "\", value: " . ($label[$listParameter[$i]][1])/$label[$listParameter[$i]][2] . "},";
+              }
+              */
+            ?>
           ],
           hideHover: 'auto'
         });
       });
     </script>
-
   </body>
 </html>

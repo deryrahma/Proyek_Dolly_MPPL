@@ -86,7 +86,8 @@
               <a href="mh_edit_pilih.php"><i class="glyphicon glyphicon-pencil">&nbsp;&nbsp;&nbsp;</i></a>
               <a href="mh_hapus_pilih.php"><i class="glyphicon glyphicon-trash"></i></a></span></center>
               <br/>
-            <li class="header">MENU UTAMA</li>
+            <li class="header">MENU UTAMA</li>    
+
             <li class="treeview">
               <a href="mh_profil_diri.php">
                 <img src="../../dist/img/icon2.png"/ width="10%" height="10%">
@@ -167,7 +168,9 @@
                   </a>
                 </li>
               </ul>
-            </li>          
+            </li>
+
+            
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -212,7 +215,8 @@
           <?php
             include "../connection.php";
             //echo $_GET['id_pelatihan'] . "\n";
-            $query = "SELECT * FROM anak_binaan WHERE ID_ANAK =" . $_GET['id_anak'];
+            echo $_SESSION['id_kakak'] . "<br>";
+            $query = "SELECT * FROM anak_binaan, kakak_asuh, rapor_harian, jadwal_pelatihan, pelatihan WHERE anak_binaan.ID_KAKAK = kakak_asuh.ID_KAKAK AND kakak_asuh.ID_KAKAK = " . $_SESSION['id_kakak'] . " AND anak_binaan.ID_ANAK=rapor_harian.ID_ANAK AND jadwal_pelatihan.ID_JADWAL = rapor_harian.ID_JADWAL AND pelatihan.ID_PELATIHAN = jadwal_pelatihan.ID_PELATIHAN AND jadwal_pelatihan.JADWAL_PELATIHAN = " . $_GET['jadwal_pelatihan'] . " AND jadwal_pelatihan.ID_PELATIHAN = " . $_GET['id_pelatihan'];
             $result = mysql_query($query);
             if($result)
             {

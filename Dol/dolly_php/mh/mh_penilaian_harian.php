@@ -187,16 +187,7 @@
                 </h1>
               </td>
               <td>
-                <div class="col-md-4 pull-right">
-                  <form action="#" method="get" class="sidebar-form">
-                    <div class="input-group">
-                      <input type="text" name="q" class="form-control" placeholder="Cari..."/>
-                      <span class="input-group-btn">
-                        <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="glyphicon glyphicon-search"></i></button>
-                      </span>
-                    </div>
-                  </form>
-                </div>
+                
               </td>
             </tr>
           </table>

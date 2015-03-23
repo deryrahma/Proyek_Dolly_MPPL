@@ -325,10 +325,15 @@
             <tbody>
               <?php
                 include "../connection.php";
+                //$id_pelatihan = $_GET['id_pelatihan'];
+                $minggu_ke = $_GET['minggu_ke'];
+                $bulan_ke = $_GET['bulan_ke'];
+                $tahun_ke = $_GET['tahun_ke'];
+
                 if (isset($_GET['val_search'])) {
-                  $query = "SELECT * FROM anak_binaan WHERE anak_binaan.NAMA_ANAK LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.JK_ANAK LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.TEMPAT_LAHIR LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.TANGGAL_LAHIR LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.AGAMA LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ANAK_KE LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ALAMAT_SISWA LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.TANGGAL_MASUK LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.KELAS LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.NAMA_SEKOLAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.SEKOLAH_ASAL LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ALAMAT_SEKOLAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.NAMA_SEKOLAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.SEKOLAH_ASAL LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ALAMAT_SEKOLAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.NAMA_AYAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.NAMA_IBU LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ALAMAT_ORTU LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.PEKERJAAN_AYAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.PEKERJAAN_IBU LIKE '%" . $_GET['val_search'] . "%'";
+                  $query = "SELECT * FROM anak_binaan WHERE " . $_SESSION['id_kakak'] . " = anak_binaan.ID_KAKAK AND (anak_binaan.NAMA_ANAK LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.JK_ANAK LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.TEMPAT_LAHIR LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.TANGGAL_LAHIR LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.AGAMA LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ANAK_KE LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ALAMAT_SISWA LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.TANGGAL_MASUK LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.KELAS LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.NAMA_SEKOLAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.SEKOLAH_ASAL LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ALAMAT_SEKOLAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.NAMA_SEKOLAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.SEKOLAH_ASAL LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ALAMAT_SEKOLAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.NAMA_AYAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.NAMA_IBU LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.ALAMAT_ORTU LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.PEKERJAAN_AYAH LIKE '%" . $_GET['val_search'] . "%' OR anak_binaan.PEKERJAAN_IBU LIKE '%" . $_GET['val_search'] . "%')";
                 } else {
-                  $query = "SELECT * FROM anak_binaan";
+                  $query = "SELECT * FROM anak_binaan WHERE anak_binaan.ID_KAKAK = " . $_SESSION['id_kakak'];
                 }
                 $result = mysql_query($query);
                 if($result)
@@ -346,7 +351,7 @@
                       echo "<td>" . $row['TEMPAT_LAHIR'] . "</td>\n\t";
                       echo "<td>" . $row['TANGGAL_LAHIR'] . "</td>\n\t";
                       echo "<td>" . $row['AGAMA'] . "</td>\n\t";
-                      echo "<td><center><a href=\"mh_penilaian_mingguan.php?id_anak=" . $row['ID_ANAK'] . "&&tanggal_lap_mingguan=" . $tanggal_lap_mingguan . "\"><i class=\"glyphicon glyphicon-list-alt\"></i></a></center></td></tr>\n\t";
+                      echo "<td><center><a href=\"mh_penilaian_mingguan.php?id_anak=" . $row['ID_ANAK'] . "&&minggu_ke=" . $minggu_ke . "&&bulan_ke=" . $bulan_ke . "&&tahun_ke=" . $tahun_ke . "&&id_pelatihan=" . $id_pelatihan . "\"><i class=\"glyphicon glyphicon-list-alt\"></i></a></center></td></tr>\n\t";
                     }
                 }
                 else {
